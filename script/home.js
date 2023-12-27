@@ -128,6 +128,9 @@ function attemptLogin() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     var auth = authenticate(username, password);
+    var storedpassword = localStorage.getItem(username)
+
+
 
     if (auth) {
 
@@ -137,11 +140,15 @@ function attemptLogin() {
 
 
 
+
         // Hiển thị button Edit và Clear
 
         showEditButtons('content')
 
-    } else {
+    } else if(password===storedpassword){
+        alert('You sign in successfully!');
+    }
+    else{
         alert('Authentication failed.');
     }
 }
