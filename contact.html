@@ -7,14 +7,18 @@
     <title>Contact</title>
     <link rel="stylesheet" href="style/homepage/style.css">
     <link rel="stylesheet" href="style/homepage/webmaster.css">
-     
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
     <link rel="stylesheet" href="style/contact.css">
 
     <style>
-        
-        
+
+
     </style>
 </head>
 
@@ -35,45 +39,98 @@
                 <a href="development.html">Latest Development</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="club.html">Clubs</a>
-
                 <a href="guidelines.html">Guidelines</a>
-                <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
-                <a href="#" onclick="showLogin(); return false;">Login</a>
-            </div>
-
-            <div id="login-form" style="display: none;">
-                <label for="username">Username:</label>
-                <input type="text" id="username">
-                <label for="password">Password:</label>
-                <input type="password" id="password">
-                <button onclick="attemptLogin()">Submit</button>
             </div>
 
         </nav>
 
-    
+        <div class="icons">
+            <a href="#"><span id="menu-btn" class="material-symbols-outlined">
+                    menu
+                </span></a>
+            <a href="#"><span class="material-symbols-outlined" id="login-btn">
+                    passkey
+                </span></a>
+
+            <a href="#"><span class="material-symbols-outlined" id="search-btn">
+                    search
+                </span></a>
+        </div>
 
     </header>
     <!--Header section end-->
+    <!--login-form start-->
+    <div id="login-form" class="form--unhidden">
+        <div class="avatar">
+            <span id="close-login" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <button type="submit" onclick="attemptLogin()">Sign in</button>
+            <label for="">
+                <input type="checkbox">remember me
+            </label>
+            <p style="font-size: 1.5rem; text-align: center;">don't have account?</p>
+            <button type="button" id="linksignup">Sign up</button>
+            <div class="more">
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
 
-    <div>
+        </div>
 
     </div>
+    <!--login-form end-->
 
+    <!--sign-up form start-->
+    <div id="signup-form" class="form--hidden">
+        <div class="avatar">
+            <span id="close-signup" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <label for="password">Repeat Password:</label>
+            <input type="password" id="password" placeholder="Enter your Repeat password">
+            <button type="submit" onclick="attemptLogin()">Sign Up</button>
+            <div class="more">
+                <span class="psw">Have an account? <a href="#" id="linksignin">sign in?</a></span>
+            </div>
+
+        </div>
+
+    </div>
+    <!--sign-up form end-->
     <!--Search form-->
     <div class="search-form">
         <span id="close-search" class="material-symbols-outlined">
             close
         </span>
         <form action="">
-            <input type="text" name="" placeholder="search here..." id="search-box">
+            <input type="text" name="" placeholder="search here..." id="search-box" oninput="search()">
             <label><span class="material-symbols-outlined">
                     search
                 </span></label>
         </form>
+        <ul id="searchResults">
+
+        </ul>
     </div>
     <!--Search form end-->
+    <div class="home">
+
+    </div>
 
     <!--map start-->
     <section class="location">
@@ -87,8 +144,8 @@
     <!--map start-->
 
     <!--contact start-->
-    <section class="contact-us" >
-        <table id="contact-us" style="display: block;" >
+    <section class="contact-us">
+        <table id="contact-us" style="display: block;">
             <tr>
                 <td>
                     <div class="contact-col">
@@ -133,15 +190,53 @@
     </section>
 
 
-        <!--Hien thị thong tin message-->
+    <!--Hien thị thong tin message-->
 
-        <div class="message" style="display: none;" id="contact-message"></div>
+    <div class="message" style="display: none;" id="contact-message"></div>
+
+    <!--footer start-->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <a href="homepage.html">Home</a>
+                <a href="technican.html">Technican</a>
+                <a href="development.html">Latest Development</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="club.html">Clubs</a>
+
+                <a href="guidelines.html">Guidelines</a>
+
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="box">
+                <h3>contact infor</h3>
+                <a href=""><i class="fas fa-phone"></i> +231-413-123</a>
+                <a href=""><i class="fas fa-phone"></i> +111-442-123</a>
+                <a href=""><i class="fas fa-envelope"></i> linhdaica@gmail.com</a>
+                <a href=""><i class="fas fa-map"></i> Ho Chi Minh, Viet Nam </a>
+
+            </div>
+            <div class="box">
+                <h3>follow us</h3>
+                <a href=""><i class="fab fa-facebook-f"></i> facebook</a>
+                <a href=""><i class="fab fa-twitter"></i> twitter</a>
+                <a href=""><i class="fab fa-instagram"></i> instagram</a>
+                <a href=""><i class="fab fa-linkedin"></i> linkedin</a>
+                <a href=""><i class="fab fa-github"></i> github</a>
+
+            </div>
+
+            <div class="credit">created by <span>Group 7 Aptech</span> | allright reserved!</div>
+        </div>
+    </section>
+    <!--footer end-->
 
 
-        <script src="script/contact.js"></script>
-        <script src="script/script.js"></script>
-        <script src="script/home.js"></script>
-        <script src="script/script_search.js"></script>
+    <script src="script/contact.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/home.js"></script>
+    <script src="script/script_search.js"></script>
 
 
 

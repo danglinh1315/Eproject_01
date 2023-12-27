@@ -7,10 +7,11 @@
   text-align: center;
   color: #fff;
 }
-.box {
+.clubs .box {
   height: auto;
   padding: 50px;
   background-color: #dadcca;
+  border: 1px solid tomato;
 }
 .row {
   display: flex;
@@ -30,6 +31,32 @@
   margin-bottom: 3rem;
   font-weight: 600;
 }
-.second{
+.clubs .second{
   background: none;
+}
+.clubs .navbar{
+  overflow: hidden;
+  background-color: #dfbc0b;
+  margin-bottom: 3rem;
+}
+.clubs .navbar a{
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.clubs .navbar a:hover{
+  background-color: #ddd;
+  color: black;
+}
+.clubs .navbar a:active{
+  background-color: #04AA6D;
+  color: white;
+}
+#new img{
+  border-radius: 5px;
+  width: 100%;
+  background-size: cover;
 }

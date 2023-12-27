@@ -14,21 +14,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        .search-form ul{
+        .search-form ul {
             font-size: 2rem;
             margin-top: 200px;
             color: white;
 
         }
     </style>
-
-    <script>
-        function showLogin() {
-            var loginForm = document.getElementById('login-form');
-            loginForm.style.display = 'block';
-        }
-
-    </script>
 
 
 </head>
@@ -49,19 +41,8 @@
                 <a href="development.html">Latest Development</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="club.html">Clubs</a>
-               
                 <a href="guidelines.html">Guidelines</a>
-                <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
-                <a href="#" onclick="showLogin(); return false;">Login</a>
-            </div>
-
-            <div id="login-form" style="display: none;">
-                <label for="username">Username:</label>
-                <input type="text" id="username">
-                <label for="password">Password:</label>
-                <input type="password" id="password">
-                <button onclick="attemptLogin()">Submit</button>
             </div>
 
         </nav>
@@ -70,27 +51,76 @@
             <a href="#"><span id="menu-btn" class="material-symbols-outlined">
                     menu
                 </span></a>
+            <a href="#"><span class="material-symbols-outlined" id="login-btn">
+                    passkey
+                </span></a>
 
             <a href="#"><span class="material-symbols-outlined" id="search-btn">
                     search
                 </span></a>
         </div>
-       
 
     </header>
     <!--Header section end-->
+    <!--login-form start-->
+    <div id="login-form" class="form--unhidden">
+        <div class="avatar">
+            <span id="close-login" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <button type="submit" onclick="attemptLogin()">Sign in</button>
+            <label for="">
+                <input type="checkbox">remember me
+            </label>
+            <p style="font-size: 1.5rem; text-align: center;">don't have account?</p>
+            <button type="button" id="linksignup">Sign up</button>
+            <div class="more">
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
 
-    <div>
+        </div>
 
     </div>
+    <!--login-form end-->
 
+    <!--sign-up form start-->
+    <div id="signup-form" class="form--hidden">
+        <div class="avatar">
+            <span id="close-signup" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <label for="password">Repeat Password:</label>
+            <input type="password" id="password" placeholder="Enter your Repeat password">
+            <button type="submit" onclick="attemptLogin()">Sign Up</button>
+            <div class="more">
+                <span class="psw">Have an account? <a href="#" id="linksignin">sign in?</a></span>
+            </div>
+
+        </div>
+
+    </div>
+     <!--sign-up form end-->
     <!--Search form-->
     <div class="search-form">
         <span id="close-search" class="material-symbols-outlined">
             close
         </span>
         <form action="">
-            <input type="text" name="" placeholder="search here..." id="search-box"  oninput="search()">
+            <input type="text" name="" placeholder="search here..." id="search-box" oninput="search()">
             <label><span class="material-symbols-outlined">
                     search
                 </span></label>
@@ -166,7 +196,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/WilliamCecilSlingsby_Storen.jpg/220px-WilliamCecilSlingsby_Storen.jpg"
                     alt="">
                 <div class="content" id="home_1_1">
-                    <h3 >Early mountaineering</h3>
+                    <h3>Early mountaineering</h3>
                     <p>Mountaineering, mountain climbing, or alpinism is a set of outdoor activities that involves
                         ascending mountains. Mountaineering-related activities include traditional outdoor climbing,
                         skiing,
@@ -193,15 +223,17 @@
             <div class="box">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/M_Rainier.jpg/230px-M_Rainier.jpg"
                     alt="">
-                    <div class="content" id="home_1_3">
+                <div class="content" id="home_1_3">
 
-                <h3>Expansion around the world</h3>
-                <p>In the 19th century, the focus of mountaineering turned towards mountains beyond the Alps. One of the
-                    earliest mountain areas to be explored beyond the Alps in the 19th century were the mountains of
-                    Norway—particularly Jotunheimen—where British mountaineers such as William Cecil Slingsby, Harold
-                    Raeburn and Howard Priestman were early pioneers.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
+                    <h3>Expansion around the world</h3>
+                    <p>In the 19th century, the focus of mountaineering turned towards mountains beyond the Alps. One of
+                        the
+                        earliest mountain areas to be explored beyond the Alps in the 19th century were the mountains of
+                        Norway—particularly Jotunheimen—where British mountaineers such as William Cecil Slingsby,
+                        Harold
+                        Raeburn and Howard Priestman were early pioneers.</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
             </div>
             <div class="box">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Summitting_Island_Peak.jpg/230px-Summitting_Island_Peak.jpg"
@@ -371,7 +403,7 @@
     </section>
     <!--shop section end-->
 
- 
+
     <!--packages section start-->
     <section class="packages" id="packages">
         <h1 class="heading">Records</h1>
@@ -479,132 +511,142 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide">
                     <div class="box">
-                    <img src="https://img.upanh.tv/2023/12/17/yente-van-eynde-4KhBmnviiwE-unsplash.jpg" alt="">
-                    <div class="icon">
-                        <a href="#"><span class="material-symbols-outlined">
-                                calendar_month
-                            </span>24st may 2023</a>
-                        <a href=""><span class="material-symbols-outlined">
-                                person
-                            </span>by ali</a>
-                    </div>
-                    <div class="content">
-                    <h3>Is rock climbing dangerous? </h3>
-                    <p>A common way of answering this question is to say that you’re more likely to get injured driving
-                        to the crag than when you’re on belay, but is that actually true? </p>
-                    <a href="" class="btn">read more</a>
-                </div>
-                </div>
-                </div>
-                <div class="swiper-slide slide">
-                    <div class="box">
-                    <img src="https://img.upanh.tv/2023/12/18/child-2737064_1280.jpg" alt="child-2737064_1280.jpg">
-                    <div class="icon">
-                        <a href=""><span class="material-symbols-outlined">
-                                calendar_month
-                            </span>2st june 2022</a>
-                        <a href="#"><span class="material-symbols-outlined">
-                                person
-                            </span>by max</a>
-                           
-                    </div>
-                    <div class="content">
-                    <h3>Minor injuries </h3>
-                    <p>The majority of climbing accidents lead to minor injuries such as scrapes from the rock and
-                        strained or torn ligaments. Climbers most frequently injure their extremities, not internal
-                        organs. The predominant portion of injuries are to the head, neck, chest and abdomen. </p>
-                    <a href="" class="btn">read more</a>
-                </div>
-                </div>
-                </div>
-                <div class="swiper-slide slide">
-                    <div class="box">
-                    <img src="https://img.upanh.tv/2023/12/18/mountain-69517_1280.jpg" alt="mountain-69517_1280.jpg">
-                    <div class="icon">
-                        <a href=""><span class="material-symbols-outlined">
-                                calendar_month
-                            </span>4st may 2022</a>
-                        <a href=""><span class="material-symbols-outlined">
-                                person
-                            </span>by elsa</a>
-                    </div>
-                    <div class="content">
-                    <h3>Falling </h3>
-                    <p>Falling is the most common cause of climbing injuries and it usually happens when you’re on the
-                        way up, not down. Lead climbers are at higher risk of falling than their partners. If you’re
-                        leading, you’re only as safe as the last piece of gear you placed, after all. </p>
-                    <a href="" class="btn">read more</a>
-                </div>
-                </div>
-                </div>
-                <div class="swiper-slide slide">
-                    <div class="box">
-                    <img src="https://img.upanh.tv/2023/12/18/rappelling-1842180_1280.jpg"
-                        alt="rappelling-1842180_1280.jpg">
-                    <div class="icon">
-                        <a href=""><span class="material-symbols-outlined">
-                                calendar_month
-                            </span>11st july 2023</a>
-                        <a href=""><span class="material-symbols-outlined">
-                                person
-                            </span>by leona</a>
-                    </div>
-                    <div class="content">
-                    <h3>Improper use of equipment </h3>
-                    <p>Of course, human error accounts for some rock climbing accidents, whether that’s not
-                        communicating with your partner properly, not tying in properly or not placing gear securely.
-                    </p>
-                    <a href="" class="btn">read more</a>
-                </div>
-                </div>
-                </div>
-                <div class="swiper-slide slide">
-                    <div class="box">
-                    <img src="https://img.upanh.tv/2023/12/18/the-jade-dragon-snow-mountain-1622223_1280.jpg"
-                        alt="the-jade-dragon-snow-mountain-1622223_1280.jpg">
-                    <div class="icon">
-                        <a href=""><span class="material-symbols-outlined">
-                                calendar_month
-                            </span>24st feburary 2023</a>
-                        <a href=""><span class="material-symbols-outlined">
-                                person
-                            </span>by mimi</a>
-                    </div>
-                    <div class="content">
-                    <h3>Snow and ice </h3>
-                    <p>Snow and ice covered surfaces increase the probability of falling, and the length of the falls.
-                    </p>
-                    <a href="" class="btn">read more</a>
-                </div>
-                </div>
-                </div>
-                <div class="swiper-slide slide">
-                    <div class="box">
-                    <img src="https://img.upanh.tv/2023/12/17/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand.jpg"
-                        alt="">
-                    <div class="icon">
-                        <a href=""><span class="material-symbols-outlined">
-                                calendar_month
-                            </span>24st may 2023</a>
-                        <a href=""><span class="material-symbols-outlined">
-                                person
-                            </span>by admin</a>
+                        <img src="https://img.upanh.tv/2023/12/17/yente-van-eynde-4KhBmnviiwE-unsplash.jpg" alt="">
+                        <div class="icon">
+                            <a href="#"><span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>24st may 2023</a>
+                            <a href=""><span class="material-symbols-outlined">
+                                    person
+                                </span>by ali</a>
                         </div>
-                    
-                    <div class="content">
-                    <h3>Weather </h3>
-                    <p>Changing weather conditions always increase danger in the outdoors, whether that’s climbing a
-                        slick surface in the rain or dangerous conditions like lightning.</p>
-                    <a href="" class="btn">read more</a>
+                        <div class="content">
+                            <h3>Is rock climbing dangerous? </h3>
+                            <p>A common way of answering this question is to say that you’re more likely to get injured
+                                driving
+                                to the crag than when you’re on belay, but is that actually true? </p>
+                            <a href="" class="btn">read more</a>
+                        </div>
+                    </div>
                 </div>
+                <div class="swiper-slide slide">
+                    <div class="box">
+                        <img src="https://img.upanh.tv/2023/12/18/child-2737064_1280.jpg" alt="child-2737064_1280.jpg">
+                        <div class="icon">
+                            <a href=""><span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>2st june 2022</a>
+                            <a href="#"><span class="material-symbols-outlined">
+                                    person
+                                </span>by max</a>
+
+                        </div>
+                        <div class="content">
+                            <h3>Minor injuries </h3>
+                            <p>The majority of climbing accidents lead to minor injuries such as scrapes from the rock
+                                and
+                                strained or torn ligaments. Climbers most frequently injure their extremities, not
+                                internal
+                                organs. The predominant portion of injuries are to the head, neck, chest and abdomen.
+                            </p>
+                            <a href="" class="btn">read more</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="swiper-slide slide">
+                    <div class="box">
+                        <img src="https://img.upanh.tv/2023/12/18/mountain-69517_1280.jpg"
+                            alt="mountain-69517_1280.jpg">
+                        <div class="icon">
+                            <a href=""><span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>4st may 2022</a>
+                            <a href=""><span class="material-symbols-outlined">
+                                    person
+                                </span>by elsa</a>
+                        </div>
+                        <div class="content">
+                            <h3>Falling </h3>
+                            <p>Falling is the most common cause of climbing injuries and it usually happens when you’re
+                                on the
+                                way up, not down. Lead climbers are at higher risk of falling than their partners. If
+                                you’re
+                                leading, you’re only as safe as the last piece of gear you placed, after all. </p>
+                            <a href="" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="box">
+                        <img src="https://img.upanh.tv/2023/12/18/rappelling-1842180_1280.jpg"
+                            alt="rappelling-1842180_1280.jpg">
+                        <div class="icon">
+                            <a href=""><span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>11st july 2023</a>
+                            <a href=""><span class="material-symbols-outlined">
+                                    person
+                                </span>by leona</a>
+                        </div>
+                        <div class="content">
+                            <h3>Improper use of equipment </h3>
+                            <p>Of course, human error accounts for some rock climbing accidents, whether that’s not
+                                communicating with your partner properly, not tying in properly or not placing gear
+                                securely.
+                            </p>
+                            <a href="" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="box">
+                        <img src="https://img.upanh.tv/2023/12/18/the-jade-dragon-snow-mountain-1622223_1280.jpg"
+                            alt="the-jade-dragon-snow-mountain-1622223_1280.jpg">
+                        <div class="icon">
+                            <a href=""><span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>24st feburary 2023</a>
+                            <a href=""><span class="material-symbols-outlined">
+                                    person
+                                </span>by mimi</a>
+                        </div>
+                        <div class="content">
+                            <h3>Snow and ice </h3>
+                            <p>Snow and ice covered surfaces increase the probability of falling, and the length of the
+                                falls.
+                            </p>
+                            <a href="" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <div class="box">
+                        <img src="https://img.upanh.tv/2023/12/17/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand.jpg"
+                            alt="">
+                        <div class="icon">
+                            <a href=""><span class="material-symbols-outlined">
+                                    calendar_month
+                                </span>24st may 2023</a>
+                            <a href=""><span class="material-symbols-outlined">
+                                    person
+                                </span>by admin</a>
+                        </div>
+
+                        <div class="content">
+                            <h3>Weather </h3>
+                            <p>Changing weather conditions always increase danger in the outdoors, whether that’s
+                                climbing a
+                                slick surface in the rain or dangerous conditions like lightning.</p>
+                            <a href="" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <!--blog section end-->
 
-    
+
 
     <!--newsletter section start-->
     <section class="newsletter">
@@ -620,20 +662,23 @@
         </div>
     </section>
     <!--newsletter section end-->
-    
+
 
     <!--footer start-->
     <section class="footer">
         <div class="box-container">
             <div class="box">
                 <a href="homepage.html">Home</a>
+                <a href="technican.html">Technican</a>
+                <a href="development.html">Latest Development</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="club.html">Clubs</a>
-                <a href="guideline.html">Guidelines</a>
-                <a href="blog.html">Blog</a>
+
+                <a href="guidelines.html">Guidelines</a>
+
                 <a href="contact.html">Contact</a>
             </div>
-           
+
             <div class="box">
                 <h3>contact infor</h3>
                 <a href=""><i class="fas fa-phone"></i> +231-413-123</a>

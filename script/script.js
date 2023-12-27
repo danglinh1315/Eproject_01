@@ -15,6 +15,35 @@ document.querySelector('#search-btn').onclick = () => {
 document.querySelector('#close-search').onclick = () => {
     searchForm.classList.remove('active');
 }
+/*login form change */
+let loginForm = document.querySelector('#login-form');
+
+document.querySelector('#login-btn').onclick = () => {
+    loginForm.classList.add('active');
+}
+document.querySelector('#close-login').onclick = () => {
+    loginForm.classList.remove('active');
+}
+
+/*sigup change*/
+let signupForm = document.querySelector('#signup-form');
+
+document.querySelector('#linksignup').onclick = () => {
+    loginForm.classList.remove('active');
+    signupForm.classList.add('active');
+}
+document.querySelector('#close-signup').onclick = () => {
+    signupForm.classList.remove('active');
+}
+
+/*return login*/
+document.querySelector('#linksignin').onclick = () => {
+    signupForm.classList.remove('active');
+    loginForm.classList.add('active');
+}
+
+
+
 window.onscroll = () => {
     navbar.classList.remove('active');
 

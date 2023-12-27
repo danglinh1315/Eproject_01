@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>club</title>
-       
+
     <link rel="stylesheet" href="style/club.css">
 
     <link rel="stylesheet" href="style/homepage/style.css">
@@ -16,12 +16,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style/homepage/webmaster.css">
 
+    <script>
+
+        // show the given page, hide the rest
+        function show(elementID) {
+            // find the requested page and alert if it's not found
+            const ele = document.getElementById(elementID);
+            if (!ele) {
+                alert("no such element");
+                return;
+            }
+
+
+            // get all pages, loop through them and hide them
+            const pages = document.getElementsByClassName('category');
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+
+            // then show the requested page
+            document.getElementById('About-groups').style.display = 'none';
+            ele.style.display = 'block';
+        }
+    </script>
 
 </head>
 
 <body>
     <!--Header section start-->
-
     <header class="header">
         <a href="" class="logo"><img src="https://img.upanh.tv/2023/12/17/mountain.png"
                 style="width: 100px; border-radius: 5px;" alt="logo">moutaineering</a>
@@ -36,19 +58,8 @@
                 <a href="development.html">Latest Development</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="club.html">Clubs</a>
-
                 <a href="guidelines.html">Guidelines</a>
-                <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
-                <a href="#" onclick="showLogin(); return false;">Login</a>
-            </div>
-
-            <div id="login-form" style="display: none;">
-                <label for="username">Username:</label>
-                <input type="text" id="username">
-                <label for="password">Password:</label>
-                <input type="password" id="password">
-                <button onclick="attemptLogin()">Submit</button>
             </div>
 
         </nav>
@@ -56,6 +67,9 @@
         <div class="icons">
             <a href="#"><span id="menu-btn" class="material-symbols-outlined">
                     menu
+                </span></a>
+            <a href="#"><span class="material-symbols-outlined" id="login-btn">
+                    passkey
                 </span></a>
 
             <a href="#"><span class="material-symbols-outlined" id="search-btn">
@@ -65,216 +79,588 @@
 
     </header>
     <!--Header section end-->
+    <!--login-form start-->
+    <div id="login-form" class="form--unhidden">
+        <div class="avatar">
+            <span id="close-login" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <button type="submit" onclick="attemptLogin()">Sign in</button>
+            <label for="">
+                <input type="checkbox">remember me
+            </label>
+            <p style="font-size: 1.5rem; text-align: center;">don't have account?</p>
+            <button type="button" id="linksignup">Sign up</button>
+            <div class="more">
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
 
+        </div>
+
+    </div>
+    <!--login-form end-->
+
+    <!--sign-up form start-->
+    <div id="signup-form" class="form--hidden">
+        <div class="avatar">
+            <span id="close-signup" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <label for="password">Repeat Password:</label>
+            <input type="password" id="password" placeholder="Enter your Repeat password">
+            <button type="submit" onclick="attemptLogin()">Sign Up</button>
+            <div class="more">
+                <span class="psw">Have an account? <a href="#" id="linksignin">sign in?</a></span>
+            </div>
+
+        </div>
+
+    </div>
+    <!--sign-up form end-->
     <!--Search form-->
     <div class="search-form">
         <span id="close-search" class="material-symbols-outlined">
             close
         </span>
         <form action="">
-            <input type="text" name="" placeholder="search here..." id="search-box">
+            <input type="text" name="" placeholder="search here..." id="search-box" oninput="search()">
             <label><span class="material-symbols-outlined">
                     search
                 </span></label>
         </form>
+        <ul id="searchResults">
+
+        </ul>
     </div>
     <!--Search form end-->
     <section class="home">
 
     </section>
     <!--Climbing group start-->
-    <h1 class="heading">Climbing clubs</h1>
+
 
     <section class="clubs">
-        <div class="box">
-            <div class="row">
+        <h1 class="heading">Climbing clubs</h1>
+        <nav class="navbar">
+            <a href="#" onclick="return show('About-groups');">About groups</a>
+            <a href="#" onclick="return show('Their-achive');">Their achive</a>
+            <a href="#" onclick="return show('Athletes');">Athletes</a>
+            <a href="#" onclick="return show('new');">what's new</a>
+        </nav>
+        <div class="unhide" id="About-groups">
+            <div class="box">
+                <div class="row">
 
-                <div class="cell content">
-                    <h3>Marylebone Mountaineering & Climbing Club </h3>
-                    <p>The Marylebone Mountaineering Club was founded in 1974 and boasts around 100 members who live
-                        mostly in
-                        and around London.
+                    <div class="cell content">
+                        <h3>Marylebone Mountaineering & Climbing Club </h3>
+                        <p>The Marylebone Mountaineering Club was founded in 1974 and boasts around 100 members who live
+                            mostly in
+                            and around London.
 
-                        The activities of the club are centred around the once monthly meets which take place all over
-                        the UK.
-                        Many informal trips are also organised outside of the meet program with foreign trips, typically
-                        to the
-                        Alps or sport climbing in Spain and Italy. </p>
-                    <p>As with other clubs there are various excursions to the London climbing walls and a large group
-                        go to The
-                        Castle on regular basis.
+                            The activities of the club are centred around the once monthly meets which take place all
+                            over
+                            the UK.
+                            Many informal trips are also organised outside of the meet program with foreign trips,
+                            typically
+                            to the
+                            Alps or sport climbing in Spain and Italy. </p>
+                        <p>As with other clubs there are various excursions to the London climbing walls and a large
+                            group
+                            go to The
+                            Castle on regular basis.
 
-                        Membership is £18 a year and is open to anyone over 18. The club is affiliated to the BMC, and
-                        members
-                        will receive the same benefits as individual members of the BMC (third party insurance, free
-                        Summit
-                        magazine, reduced subscription rates to High magazine)</p>
+                            Membership is £18 a year and is open to anyone over 18. The club is affiliated to the BMC,
+                            and
+                            members
+                            will receive the same benefits as individual members of the BMC (third party insurance, free
+                            Summit
+                            magazine, reduced subscription rates to High magazine)</p>
+                    </div>
+                    <iframe class="cell"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62172.2034333029!2d80.04758590187292!3d13.114213021296962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5289d19bef6d25%3A0xe575e8ba16808e64!2zQXZhZGksIFRhbWlsIE5hZHUsIOG6pG4gxJDhu5k!5e0!3m2!1svi!2s!4v1703127137340!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <iframe class="cell"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62172.2034333029!2d80.04758590187292!3d13.114213021296962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5289d19bef6d25%3A0xe575e8ba16808e64!2zQXZhZGksIFRhbWlsIE5hZHUsIOG6pG4gxJDhu5k!5e0!3m2!1svi!2s!4v1703127137340!5m2!1svi!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="box second">
+                <div class="row">
+
+                    <div class="cell content">
+                        <h3>North London Climbing and Mountaineering Club </h3>
+                        <p>The North London Climbing and Mountaineering Club is another of the more active London
+                            climbing
+                            clubs,
+                            they have one of the best looking websites too so be sure to check it out.The club meets
+                            every
+                            Wednesday
+                            in London at Mile End Climbing Wall. They also climb on regular basis at
+                            The Castle and The Arch but on a more informal basis.</p>
+                        <p>Their trips away schedule seems less formal than the other London Climbing Clubs in this
+                            section
+                            but
+                            members do go away almost every weekend to climb all over the place
+
+                            Check out the clubs website for more details or click here for information on joining the
+                            North
+                            London
+                            Climbing Club</p>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89964.17658096417!2d5.470588898266281!3d45.199634938507714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478aec88889fae31%3A0x408ab2ae4be81a0!2sAutrans%2C%2038880%20Autrans-M%C3%A9audre-en-Vercors%2C%20Ph%C3%A1p!5e0!3m2!1svi!2s!4v1703128172154!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="box">
+                <div class="row">
+
+                    <div class="cell content">
+                        <h3>Rockhoppers Mountaineering & Climbing Club </h3>
+                        <p>The Rockhoppers Mountaineering and Climbing Club really is one of London's most active clubs
+                            in
+                            London,
+                            as you will see by there extremely busy meet schedule.
+
+                            The club covers all aspects of mountaineering, from rock climbing to hill walking, high
+                            mountaineering
+                            to trekking, winter ice to summer sport climbing too. </p>
+                        <p>They welcome climbers of all skills sets so you don't have to Ueli Steck to join the club.
+
+                            As well as meeting at The Castle on a regular basis they also have a jam packed schedule of
+                            weekends
+                            away, heading away from London on every other weekend - check out their meet schedule.</p>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38512.70222916525!2d-1.359515039225865!3d52.893633005398705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879ef10572fc133%3A0x2c141caf4f9610ee!2zQnJlYXN0b24sIFbGsMahbmcgUXXhu5FjIEFuaA!5e0!3m2!1svi!2s!4v1703128423267!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="box second">
+                <div class="row">
+
+                    <div class="cell content">
+                        <h3>The 8th Day Adventure Club </h3>
+                        <p>I know we've said this before but The 8th Day really is one of the most active clubs in
+                            London.
+                            The club covers many more activities than just climbing, ranging from mountain biking to
+                            dragon
+                            boating and a whole heap in-between.
+                            Whilst not a specific climbing club, they do have a group of climbers who meet at Mile End
+                            wall
+                            every Monday and visit the other walls sporadically. As Mile End has a lot of bouldering
+                            complete beginners are welcome to go and get stuck in to see if they like it. </p>
+                        <p> The club also arranges the occasional outdoor climbing session around the UK and beyond and
+                            members also often take their kit on the many mulit-activity weekends to the likes of
+                            Snowdonia/Devon/Peak District etc and so combine climbing with whatever else is going on.
+                            It's a nice relaxed club with the opportunity to do other stuff alongside climbing too. The
+                            8th
+                            Day really is one of the best multi-sport clubs in London and we can't speak more highly of
+                            them
+                            (it might be due to the fact that one of the London Climbing Guide crew has actually been a
+                            member of the 8th Day!).</p>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d151444.3293451214!2d-7.947101914684426!3d53.62347405101342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485dcd050efe4cef%3A0x1915df6f97e9561!2sMunicipal%20District%20of%20Ballymahon%2C%20Co.%20Longford%2C%20Ireland!5e0!3m2!1svi!2s!4v1703128965742!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="box">
+                <div class="row">
+
+                    <div class="cell content">
+                        <h3> The Alpine Club </h3>
+                        <p> The Alpine Club, is the world's first mountaineering club, has members from around the
+                            world. It
+                            was founded in 1857 and since then they have been at the leading edge of worldwide
+                            mountaineering development and exploration.
+
+                            The Alpine Club is for experienced mountaineers and climbers only!
+
+                            To become a full member you must have first have climber at least 20 alpine climbs or
+                            equivalent to a level of PD. There are other membership levels for the less experienced
+                            climbers
+                            but we would recommend you join one of the other clubs listed here to gain experience. </p>
+                        <p>The Alpine Club promotes a code of climbing ethics, which seeks to protect mountains,
+                            mountain
+                            regions and their people from any harmful impact by climbers. The club is globally
+                            recognized as
+                            influential on these issues. Membership to the Alpine club entry really is one of the
+                            aspirations of any climber/mountaineer.</p>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d312588.77172590763!2d10.513916282538515!3d52.25973311297762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47af88ed0fbae105%3A0x3d943a5fa61a6cd1!2zSGVsbXN0ZWR0LCDEkOG7qWM!5e0!3m2!1svi!2s!4v1703128995269!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="box second">
+                <div class="row">
+
+                    <div class="cell content">
+                        <h3>ICAS Climbing Club </h3>
+                        <p>ICAS Climbing Club is a BMC affiliated rock climbing club based in SE London with over 50
+                            members
+                            who often get outside on the rock. The group climb regularly at both trad & sports crags in
+                            the
+                            UK and abroad as well as the occasional bouldering trip.
+
+                            They are a friendly, supportive and adventurous club which brings climbers of all
+                            backgrounds &
+                            abilities together to share the unforgettable experiences offered by rock climbing. </p>
+                        <p>They have an indoor climbing meetup group that climb every Tuesday & Thursday at the Reach,
+                            and
+                            they also have monthly social meets and their outdoor club meetings are held every second
+                            Tuesday also hosted at the Reach. Anyone is welcome to go along and find out more.</p>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d341740.51433957426!2d36.007421803318095!3d47.99732905767378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40ddd7a72a5d826f%3A0x4c2654ff67bc19fa!2sPokrovske%2C%20Dnipropetrovsk%2C%20Ukraina!5e0!3m2!1svi!2s!4v1703129021515!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="box">
+                <div class="row">
+
+                    <div class="cell content">
+                        <h3> Ibex Mountain & Hill Walking Club</h3>
+                        <p>The Ibex Mountain and Hill Walking Club is open club for those who like hiking,
+                            mountaineering,
+                            trekking and the outdoors in the UK and abroad.The club is based in London and provides an
+                            inexpensive way to enjoy hill walking and mountaineering across the UK and further afield.
+                            They
+                            have an extensive programme events and weekend trips in Wales, the Lake District and
+                            elsewhere
+                            in the UK. Indoor and outdoor climbing, trekking holidays, sailing and a range of other
+                            activities on an informal basis.</p>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d872945.0408521334!2d-22.48109086801384!3d64.70173849388235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48d437fb7daf4a19%3A0xdd458a77017c8e69!2sBorgarbygg%C3%B0%2C%20Iceland!5e0!3m2!1svi!2s!4v1703129054213!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="Their-achive" style="display: none;">
+            <!--packages section start-->
+
+            <h1 class="heading">Their achive</h1>
+            <div class="box-container">
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.mountkinabalu.com/image/tour/4.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Fastest Growing Mountain: Nanga Parbat</h3>
+                        <p>While not as zany as some of the others on this list, Nanga Parbat’s status as the
+                            world’s
+                            fastest-growing mountain seems worth a mention. As of 2005, the 8,126-meter (26,660ft)
+                            peak is
+                            reportedly growing at a rate of 0.27 inches per year, which puts it on track to outstrip
+                            Everest
+                            as the world’s tallest peak in around 241,000 years. This isn’t particularly exciting,
+                            although
+                            it does mean that in a quarter of a million years all the Everest record-holding goons
+                            may have
+                            their titles nixed</p>
+
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.mountkinabalu.com/image/packages/lucky24/oct_dec_2023.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Fastest Time to Walk up Kilimanjaro Backward: 24 Hours</h3>
+                        <p>Ahhhh, Kilimanjaro. The ultimate walk-up, and as such, the ultimate stomping ground for
+                            all
+                            would-be mountain record holders. Nepali mountaineer Sanjay Pandit walked backward to
+                            the
+                            19,347-foot high point of Africa on December 18, 2015, clocking in at 24 hours and 40
+                            minutes.
+                        </p>
+
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.mountkinabalu.com/image/tour/41.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Longest Tyrolean Traverse over a Lava Lake: Karina Oliani, 329ft</h3>
+                        <p>Brazilian woman Karina Oliani pulled herself 329 feet over a lava-filled crater in
+                            Ethiopia,
+                            wearing what looks like an astronaut suit, in December 2017. “The most challenging part
+                            of this
+                            record,” she said, “was finding two good rigging spots.” Tyroleans don’t really require
+                            any
+                            particular skill or fitness level, so was this something any of us could do? Probably.
+                            But this
+                            scene looks plucked straight out of a Metal Gear game, so I figured it was worth a
+                            mention.</p>
+
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.mountkinabalu.com/image/tour/11.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Largest Clean-Up on Everest: 22,879 lbs of Trash</h3>
+                        <p>After all these records, most rather depressing, I’ve decided to end on a positive note.
+                            The
+                            Guinness World Records lists the “largest clean-up on Everest” as a 45-day effort by 12
+                            Sherpas
+                            between April and May of 2019, collecting a whopping 22,879 pounds of garbage, as well
+                            as four
+                            dead bodies left on the mountain.</p>
+
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.mountkinabalu.com/image/tour/5.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Most People Connected by a Rope: 2,846</h3>
+                        <p>Surprisingly, this didn’t occur as a result of some tourist nonsense on the Half Dome
+                            cables or
+                            Angels Landing. Along a trail in the Presolana massif of the Italian Bergamasque Alps in
+                            July of
+                            2017, 2,846 people roped themselves together. Ostensibly organized to “[promote] safety
+                            and
+                            sustainability</p>
+
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.mountkinabalu.com/image/tour/12.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Longest Line of Tents: 721</h3>
+                        <p>Surprisingly, the world’s longest line of tents isn’t found outside your local Best Buy
+                            on Black
+                            Friday. In fact, the world’s longest line of tents consisted of 721 tents, erected on a
+                            wooden
+                            walkway in the Wugong Mountains in Pingxiang, China on October 21, 2018. The total line
+                            of
+                            tents, put up by 200 volunteers as part of a local tourism initiative, measured 4,863
+                            feet.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--packages secton end-->
+        </div>
+
+        <div class="category" id="Athletes" style="display: none;">
+            <h1 class="heading">MEN'S BOULDER</h1>
+            <div class="box-container">
+
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/1364/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>ADAM ONDRA</h3>
+                        <p>CZE</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/3422/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>JAN HOJER</h3>
+                        <p>GER
+                        </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/2052/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>JONGWON CHON</h3>
+                        <p>KOR
+                        </p>
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/79/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>ALEKSEI RUBTSOV</h3>
+                        <p>RUS</p>
+                    </div>
+                </div>
+            </div>
+            <h1 class="heading">WOMEN'S BOULDER</h1>
+            <div class="box-container">
+
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/2253/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>AKIYO NOGUCHI</h3>
+                        <p>JPN</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/469/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>FANNY GIBERT</h3>
+                        <p>FRA
+                        </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/1750/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>KYRA CONDIE</h3>
+                        <p>USA
+                        </p>
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://ifsc.results.info/athletes/79/photo" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>JANJA GARNBRET</h3>
+                        <p>SLO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="new" style="display: none;">
+            <div class="box-container">
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.ifsc-climbing.org/templates/yootheme/cache/231218_IFSC_News_-_All_the_Sport_Climbing_athletes_participating_in_the_Olympic_Qualifier_Series_PREV-89210486.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>ALL THE SPORT CLIMBING ATHLETES PARTICIPATING IN THE OLYMPIC QUALIFIER SERIES</h3>
+                        <p>The International Federation of Sport Climbing (IFSC) African Qualifier in Pretoria, South
+                            Africa, closed the curtains on the 2023 season, with almost half of the tickets to Paris
+                            2024 being awarded at the IFSC World Championships in Bern, Switzerland,... </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.ifsc-climbing.org/templates/yootheme/cache/231218_IFSC_Media_Champion_Hunt_looks_ahead_to_The_World_Games_Chengdu_2025PREV-1fe374fd.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>CHAMPION HUNT LOOKS AHEAD TO THE WORLD GAMES CHENGDU 2025</h3>
+                        <p>When the schedule for The World Games Chengdu 2025 was released over the weekend, one point
+                            stuck out for what will be Sport Climbing’s sixth appearance at the multi-sport event – this
+                            time, it’s all about Speed.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.ifsc-climbing.org/templates/yootheme/cache/231216_IFSC_News_-_Speed_Climbing_to_star_as_main_protagonist_at_The_World_Games_Chengdu_2025_PREV-b6c1169c.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>SPEED CLIMBING TO STAR AS MAIN PROTAGONIST AT THE WORLD GAMES CHENGDU 2025</h3>
+                        <p>The International World Games Association (IWGA) has celebrated the 600-days-to-go to the
+                            next edition of The World Games – set to take place in Chengdu, China, from 7 to 17 August
+                            2025 – by announcing the official sports programme of the event.
+                        </p>
+
+
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://www.ifsc-climbing.org/templates/yootheme/cache/231209_IFSC_News_-_Janse_Van_Rensburg_wins_duel_with_Cosser_pockets_ticket_to_Paris_Olympics_PREV-747cfb75.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>JANSE VAN RENSBURG WINS DUEL WITH COSSER, POCKETS TICKET TO PARIS OLYMPICS</h3>
+                        <p>The IFSC African Qualifier ended today, 9 December, at the Loftus Versfeld Stadium in
+                            Pretoria, South Africa, crowning two home climbers with the gold medal, and most
+                            importantly, awarding them with an Olympic quota to the Olympic Games Paris 2024.
+                        </p>
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="clubs">
-        <div class="box second">
-            <div class="row">
 
-                <div class="cell content">
-                    <h3>North London Climbing and Mountaineering Club </h3>
-                    <p>The North London Climbing and Mountaineering Club is another of the more active London climbing
-                        clubs,
-                        they have one of the best looking websites too so be sure to check it out.The club meets every
-                        Wednesday
-                        in London at Mile End Climbing Wall. They also climb on regular basis at
-                        The Castle and The Arch but on a more informal basis.</p>
-                    <p>Their trips away schedule seems less formal than the other London Climbing Clubs in this section
-                        but
-                        members do go away almost every weekend to climb all over the place
 
-                        Check out the clubs website for more details or click here for information on joining the North
-                        London
-                        Climbing Club</p>
-                </div>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89964.17658096417!2d5.470588898266281!3d45.199634938507714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478aec88889fae31%3A0x408ab2ae4be81a0!2sAutrans%2C%2038880%20Autrans-M%C3%A9audre-en-Vercors%2C%20Ph%C3%A1p!5e0!3m2!1svi!2s!4v1703128172154!5m2!1svi!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!--footer start-->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <a href="homepage.html">Home</a>
+                <a href="technican.html">Technican</a>
+                <a href="development.html">Latest Development</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="club.html">Clubs</a>
+
+                <a href="guidelines.html">Guidelines</a>
+
+                <a href="contact.html">Contact</a>
             </div>
+
+            <div class="box">
+                <h3>contact infor</h3>
+                <a href=""><i class="fas fa-phone"></i> +231-413-123</a>
+                <a href=""><i class="fas fa-phone"></i> +111-442-123</a>
+                <a href=""><i class="fas fa-envelope"></i> linhdaica@gmail.com</a>
+                <a href=""><i class="fas fa-map"></i> Ho Chi Minh, Viet Nam </a>
+
+            </div>
+            <div class="box">
+                <h3>follow us</h3>
+                <a href=""><i class="fab fa-facebook-f"></i> facebook</a>
+                <a href=""><i class="fab fa-twitter"></i> twitter</a>
+                <a href=""><i class="fab fa-instagram"></i> instagram</a>
+                <a href=""><i class="fab fa-linkedin"></i> linkedin</a>
+                <a href=""><i class="fab fa-github"></i> github</a>
+
+            </div>
+
+            <div class="credit">created by <span>Group 7 Aptech</span> | allright reserved!</div>
         </div>
     </section>
-
-    <section class="clubs">
-        <div class="box">
-            <div class="row">
-
-                <div class="cell content">
-                    <h3>Rockhoppers Mountaineering & Climbing Club </h3>
-                    <p>The Rockhoppers Mountaineering and Climbing Club really is one of London's most active clubs in
-                        London,
-                        as you will see by there extremely busy meet schedule.
-
-                        The club covers all aspects of mountaineering, from rock climbing to hill walking, high
-                        mountaineering
-                        to trekking, winter ice to summer sport climbing too. </p>
-                    <p>They welcome climbers of all skills sets so you don't have to Ueli Steck to join the club.
-
-                        As well as meeting at The Castle on a regular basis they also have a jam packed schedule of
-                        weekends
-                        away, heading away from London on every other weekend - check out their meet schedule.</p>
-                </div>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38512.70222916525!2d-1.359515039225865!3d52.893633005398705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879ef10572fc133%3A0x2c141caf4f9610ee!2zQnJlYXN0b24sIFbGsMahbmcgUXXhu5FjIEFuaA!5e0!3m2!1svi!2s!4v1703128423267!5m2!1svi!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <section class="clubs">
-        <div class="box second">
-            <div class="row">
-
-                <div class="cell content">
-                    <h3>The 8th Day Adventure Club </h3>
-                    <p>I know we've said this before but The 8th Day really is one of the most active clubs in London.
-                        The club covers many more activities than just climbing, ranging from mountain biking to dragon
-                        boating and a whole heap in-between.
-                        Whilst not a specific climbing club, they do have a group of climbers who meet at Mile End wall
-                        every Monday and visit the other walls sporadically. As Mile End has a lot of bouldering
-                        complete beginners are welcome to go and get stuck in to see if they like it. </p>
-                    <p> The club also arranges the occasional outdoor climbing session around the UK and beyond and
-                        members also often take their kit on the many mulit-activity weekends to the likes of
-                        Snowdonia/Devon/Peak District etc and so combine climbing with whatever else is going on.
-                        It's a nice relaxed club with the opportunity to do other stuff alongside climbing too. The 8th
-                        Day really is one of the best multi-sport clubs in London and we can't speak more highly of them
-                        (it might be due to the fact that one of the London Climbing Guide crew has actually been a
-                        member of the 8th Day!).</p>
-                </div>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d151444.3293451214!2d-7.947101914684426!3d53.62347405101342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485dcd050efe4cef%3A0x1915df6f97e9561!2sMunicipal%20District%20of%20Ballymahon%2C%20Co.%20Longford%2C%20Ireland!5e0!3m2!1svi!2s!4v1703128965742!5m2!1svi!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <section class="clubs">
-        <div class="box">
-            <div class="row">
-
-                <div class="cell content">
-                    <h3> The Alpine Club </h3>
-                    <p> The Alpine Club, is the world's first mountaineering club, has members from around the world. It
-                        was founded in 1857 and since then they have been at the leading edge of worldwide
-                        mountaineering development and exploration.
-
-                        The Alpine Club is for experienced mountaineers and climbers only!
-
-                        To become a full member you must have first have climber at least 20 alpine climbs or
-                        equivalent to a level of PD. There are other membership levels for the less experienced climbers
-                        but we would recommend you join one of the other clubs listed here to gain experience. </p>
-                    <p>The Alpine Club promotes a code of climbing ethics, which seeks to protect mountains, mountain
-                        regions and their people from any harmful impact by climbers. The club is globally recognized as
-                        influential on these issues. Membership to the Alpine club entry really is one of the
-                        aspirations of any climber/mountaineer.</p>
-                </div>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d312588.77172590763!2d10.513916282538515!3d52.25973311297762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47af88ed0fbae105%3A0x3d943a5fa61a6cd1!2zSGVsbXN0ZWR0LCDEkOG7qWM!5e0!3m2!1svi!2s!4v1703128995269!5m2!1svi!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <section class="clubs">
-        <div class="box second">
-            <div class="row">
-
-                <div class="cell content">
-                    <h3>ICAS Climbing Club </h3>
-                    <p>ICAS Climbing Club is a BMC affiliated rock climbing club based in SE London with over 50 members
-                        who often get outside on the rock. The group climb regularly at both trad & sports crags in the
-                        UK and abroad as well as the occasional bouldering trip.
-
-                        They are a friendly, supportive and adventurous club which brings climbers of all backgrounds &
-                        abilities together to share the unforgettable experiences offered by rock climbing. </p>
-                    <p>They have an indoor climbing meetup group that climb every Tuesday & Thursday at the Reach, and
-                        they also have monthly social meets and their outdoor club meetings are held every second
-                        Tuesday also hosted at the Reach. Anyone is welcome to go along and find out more.</p>
-                </div>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d341740.51433957426!2d36.007421803318095!3d47.99732905767378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40ddd7a72a5d826f%3A0x4c2654ff67bc19fa!2sPokrovske%2C%20Dnipropetrovsk%2C%20Ukraina!5e0!3m2!1svi!2s!4v1703129021515!5m2!1svi!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <section class="clubs">
-        <div class="box">
-            <div class="row">
-
-                <div class="cell content">
-                    <h3> Ibex Mountain & Hill Walking Club</h3>
-                    <p>The Ibex Mountain and Hill Walking Club is open club for those who like hiking, mountaineering,
-                        trekking and the outdoors in the UK and abroad.The club is based in London and provides an
-                        inexpensive way to enjoy hill walking and mountaineering across the UK and further afield. They
-                        have an extensive programme events and weekend trips in Wales, the Lake District and elsewhere
-                        in the UK. Indoor and outdoor climbing, trekking holidays, sailing and a range of other
-                        activities on an informal basis.</p>
-                </div>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d872945.0408521334!2d-22.48109086801384!3d64.70173849388235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48d437fb7daf4a19%3A0xdd458a77017c8e69!2sBorgarbygg%C3%B0%2C%20Iceland!5e0!3m2!1svi!2s!4v1703129054213!5m2!1svi!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!--Climbing group end-->
+    <!--footer end-->
 
 
 

@@ -1,0 +1,85 @@
+.home {
+    height: 50vh;
+    width: 100%;
+    background: url(https://img.upanh.tv/2023/12/26/agriculture-4213197_1280.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+
+}
+
+.category .box-container .box {
+    text-align: left;
+    padding: 2rem;
+    flex-wrap: wrap;
+    background: rgba(214, 211, 211, 0.5);
+}
+
+.category-all {
+    display: flex;
+    gap: 2rem;
+    
+}
+
+article.menu {
+    width: 43rem;
+    padding: 5px;
+
+    /* Adjust padding as needed */
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-left: 0px;
+
+
+
+}
+
+article li {
+    border: 1px solid rgb(181, 125, 232);
+    border-width: 100%;
+
+    margin-left: 0px;
+    list-style: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: rgb(208, 195, 179);
+
+}
+
+article li:hover {
+    background-color: aqua;
+
+}
+
+
+
+aside {
+    flex-grow: 1;
+    padding: 20px;
+    /* Adjust padding as needed */
+    box-sizing: border-box;
+}
+
+.category-all {
+    padding: 5px;
+    border: 1px solid tomato;
+}
+
+aside.content {
+    overflow-y: auto;
+    /* Enable vertical scrollbar if needed */
+    height: 100vh;
+    /* Set a fixed height to make it always visible */
+}
+
+.content .category .box-container .box img {
+    height: 30rem;
+    width: 30rem;
+    border-radius: 5px;
+    margin: 1rem;
+}
+.category{
+    display: none;
+}

@@ -57,19 +57,8 @@
                 <a href="development.html">Latest Development</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="club.html">Clubs</a>
-               
                 <a href="guidelines.html">Guidelines</a>
-                <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
-                <a href="#" onclick="showLogin(); return false;">Login</a>
-            </div>
-
-            <div id="login-form" style="display: none;">
-                <label for="username">Username:</label>
-                <input type="text" id="username">
-                <label for="password">Password:</label>
-                <input type="password" id="password">
-                <button onclick="attemptLogin()">Submit</button>
             </div>
 
         </nav>
@@ -77,6 +66,9 @@
         <div class="icons">
             <a href="#"><span id="menu-btn" class="material-symbols-outlined">
                     menu
+                </span></a>
+            <a href="#"><span class="material-symbols-outlined" id="login-btn">
+                    passkey
                 </span></a>
 
             <a href="#"><span class="material-symbols-outlined" id="search-btn">
@@ -86,22 +78,72 @@
 
     </header>
     <!--Header section end-->
+    <!--login-form start-->
+    <div id="login-form" class="form--unhidden">
+        <div class="avatar">
+            <span id="close-login" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <button type="submit" onclick="attemptLogin()">Sign in</button>
+            <label for="">
+                <input type="checkbox">remember me
+            </label>
+            <p style="font-size: 1.5rem; text-align: center;">don't have account?</p>
+            <button type="button" id="linksignup">Sign up</button>
+            <div class="more">
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
 
-    <div>
+        </div>
 
     </div>
+    <!--login-form end-->
 
+    <!--sign-up form start-->
+    <div id="signup-form" class="form--hidden">
+        <div class="avatar">
+            <span id="close-signup" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <label for="password">Repeat Password:</label>
+            <input type="password" id="password" placeholder="Enter your Repeat password">
+            <button type="submit" onclick="attemptLogin()">Sign Up</button>
+            <div class="more">
+                <span class="psw">Have an account? <a href="#" id="linksignin">sign in?</a></span>
+            </div>
+
+        </div>
+
+    </div>
+    <!--sign-up form end-->
     <!--Search form-->
     <div class="search-form">
         <span id="close-search" class="material-symbols-outlined">
             close
         </span>
         <form action="">
-            <input type="text" name="" placeholder="search here..." id="search-box">
+            <input type="text" name="" placeholder="search here..." id="search-box" oninput="search()">
             <label><span class="material-symbols-outlined">
                     search
                 </span></label>
         </form>
+        <ul id="searchResults">
+
+        </ul>
     </div>
     <!--Search form end-->
 
@@ -110,8 +152,7 @@
         <div class="swiper home-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="box"
-                        style="background: url(https://img.upanh.tv/2023/12/17/guillaume-marques-9HRLg-yzeq8-unsplash.jpg) no-repeat;">
+                    <div class="box" style="background: url(picture/header-1.jpg) no-repeat;">
                         <div class="content">
                             <span>never stop</span>
                             <h3>exploring</h3>
@@ -126,8 +167,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="box second"
-                        style="background: url(https://img.upanh.tv/2023/12/17/rocky-mountains-person-standing-it.jpg) no-repeat;">
+                    <div class="box second" style="background: url(picture/header-2.jpg) no-repeat;">
                         <div class="content">
                             <span>make tour</span>
                             <h3>amazing</h3>
@@ -160,75 +200,87 @@
 
     <!--Home section end-->
 
-    <!--categorysection start-->
-    
+
+
 
     <!--service section start-->
     <section class="services">
         <h1 class="heading">Technical</h1>
+        <p style="font-size: 1.5rem; padding: 0.5rem; text-align: center; margin-bottom: 2rem;">The mountaineering
+            skills presented here represent some of the skills needed as a climber. This is not an exhaustive or
+            comprehensive guide. Instead, it is meant to supplement the skills learned first-hand in the mountains.
+            Nothing replaces the knowledge and experience gained from spending time in the mountains and learning from
+            seasoned, professional instructors.</p>
         <div class="box-container">
             <div class="box">
                 <img src="https://www.salewa.com/media/image/e3/10/f8/expert-hub-types-climbingo0aW1HgZdi0C5_800x800.jpg"
                     alt="">
-                    <div class="content" id="technican_1">
-                <h3>TYPES OF CLIMBING</h3>
-                <p>In many ways, sport climbing is more accessible than traditional rock climbing, both in terms of
-                    equipment and the skills required. </p>
-                <a href="#" class="btn">read more</a>
-            </div>
+                <div class="content" id="technican_1">
+                    <h3>TYPES OF CLIMBING</h3>
+                    <p>In many ways, sport climbing is more accessible than traditional rock climbing, both in terms of
+                        equipment and the skills required. </p>
+                    <a href="#" class="btn">read more</a>
+                </div>
             </div>
             <div class="box">
                 <img src="https://www.salewa.com/media/image/4f/b9/c7/Quale-attrezzatura-per-climbing_800x800.jpg"
                     alt="">
-                    <div class="content" id="technican_2">
-                <h3>WHAT CLIMBING GEAR DO YOU NEED?</h3>
-                <p>Climbing covers a whole load of different disciplines, all with their specific types of gear,
-                    techniques and training. </p>
-                <a href="#" class="btn">read more</a>
-            </div>
+                <div class="content" id="technican_2">
+                    <h3>WHAT CLIMBING GEAR DO YOU NEED?</h3>
+                    <p>Climbing covers a whole load of different disciplines, all with their specific types of gear,
+                        techniques and training. </p>
+                    <a href="#" class="btn">read more</a>
+                </div>
             </div>
             <div class="box">
                 <img src="https://www.salewa.com/media/image/59/9a/cf/arrampicata-stile-alpino_800x800.jpg" alt="">
                 <div class="content" id="technican_3">
-                <h3>HOW TO LEARN ALPINE CLIMBING</h3>
-                <p>Alpine climbing means mountain climbing in high, often glaciated areas that can include scrambling
-                    and technical climbing in snow, rock or mixed terrain. </p>
-                <a href="#" class="btn">read more</a>
-            </div>
+                    <h3>HOW TO LEARN ALPINE CLIMBING</h3>
+                    <p>Alpine climbing means mountain climbing in high, often glaciated areas that can include
+                        scrambling
+                        and technical climbing in snow, rock or mixed terrain. </p>
+                    <a href="#" class="btn">read more</a>
+                </div>
             </div>
             <div class="box">
                 <img src="https://img.upanh.tv/2023/12/18/blog-1d81836d209173500.jpg" alt="blog-1d81836d209173500.jpg">
                 <div class="content" id="technican_3">
-                <h3>Constructing Secure Anchors</h3>
-                <p>Your personal anchor is your connection to the central anchor at a belay or abseil station. One end
-                    of gets girth hitched through both the tie in loop of your harness. A dedicated locking carabiner
-                    added to its other end. Remember your personal anchor is for personal use only and is not designed
-                    to hold a fall from your partner while they are climbing.
-                </p>
-                <a href="#" class="btn">read more</a>
-            </div>
+                    <h3>Constructing Secure Anchors</h3>
+                    <p>Your personal anchor is your connection to the central anchor at a belay or abseil station. One
+                        end
+                        of gets girth hitched through both the tie in loop of your harness. A dedicated locking
+                        carabiner
+                        added to its other end. Remember your personal anchor is for personal use only and is not
+                        designed
+                        to hold a fall from your partner while they are climbing.
+                    </p>
+                    <a href="#" class="btn">read more</a>
+                </div>
             </div>
             <div class="box">
                 <img src="https://img.upanh.tv/2023/12/18/blog-2.jpg" alt="blog-2.jpg">
                 <div class="content" id="technican_4">
-                
-                <h3> How to Tie Off a Belay</h3>
-                <p>It’s worth knowing how to temporarily tie off a belay to a fallen climber to free up both hands to
-                    say adjust an anchor or get out of the system.
 
-                    To do this, we use a Mule Knot. You can use it to tie off either an Italian Hitch or a belay device
-                    attached directly to a belay. It consists of a Mule Knot backed up with an Overhand Knot.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
+                    <h3> How to Tie Off a Belay</h3>
+                    <p>It’s worth knowing how to temporarily tie off a belay to a fallen climber to free up both hands
+                        to
+                        say adjust an anchor or get out of the system.
+
+                        To do this, we use a Mule Knot. You can use it to tie off either an Italian Hitch or a belay
+                        device
+                        attached directly to a belay. It consists of a Mule Knot backed up with an Overhand Knot.</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
             </div>
             <div class="box">
                 <img src="https://img.upanh.tv/2023/12/18/blog-4.jpg" alt="blog-4.jpg">
                 <div class="content" id="technican_4">
-                <h3>Rockfall and edges</h3>
-                <p>When abseiling, keep the rope clear of loose rock and sharp edges. If you are in doubt, use some form
-                    of rope protector.</p>
-                <a href="#" class="btn">read more</a>
-            </div>
+                    <h3>Rockfall and edges</h3>
+                    <p>When abseiling, keep the rope clear of loose rock and sharp edges. If you are in doubt, use some
+                        form
+                        of rope protector.</p>
+                    <a href="#" class="btn">read more</a>
+                </div>
             </div>
         </div>
 
@@ -238,33 +290,41 @@
 
     <!--packages section start-->
     <section class="packages" id="packages">
-        <h1 class="heading">Records</h1>
+        <h1 class="heading">Climbing Moves</h1>
+        <p style="font-size: 1.5rem; padding: 0.5rem; text-align: center; margin-bottom: 2rem;">Having a good arsenal of
+            climbing moves helps you solve problems and tackle more challenging routes. Each of these moves employs
+            principles covered in the technique section, above. </p>
+        <iframe src="https://streamable.com/e/d40gen" width="560" height="315" frameborder="0" allowfullscreen style="display: block;
+            margin: 0 auto; margin-bottom: 3rem;"></iframe>
         <div class="box-container">
+
             <div class="box">
                 <div class="image">
-                    <img src="https://www.mountkinabalu.com/image/tour/4.jpg" alt="">
+                    <img src="https://www.rei.com/dam/harnois_071516_0619_backstepping.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Fastest Growing Mountain: Nanga Parbat</h3>
-                    <p>While not as zany as some of the others on this list, Nanga Parbat’s status as the world’s
-                        fastest-growing mountain seems worth a mention. As of 2005, the 8,126-meter (26,660ft) peak is
-                        reportedly growing at a rate of 0.27 inches per year, which puts it on track to outstrip Everest
-                        as the world’s tallest peak in around 241,000 years. This isn’t particularly exciting, although
-                        it does mean that in a quarter of a million years all the Everest record-holding goons may have
-                        their titles nixed</p>
+                    <h3>Back Step</h3>
+                    <p>A back step is the opposite of a normal step. Instead of stepping on a hold with your big toe and
+                        your hips squared to the wall, you turn your hip to the side and step with the outside edge
+                        (little-toe side) of your shoe.Back stepping helps get your hip close to wall, making it easier
+                        to straighten your arms and take a rest. It can also provide enough extension to reach an
+                        elusive hold. Back steps are especially useful for saving energy on steep and overhanging
+                        routes.</p>
 
                     <a href="#" class="btn">explore now</a>
                 </div>
             </div>
             <div class="box">
                 <div class="image">
-                    <img src="https://www.mountkinabalu.com/image/packages/lucky24/oct_dec_2023.jpg" alt="">
+                    <img src="https://www.rei.com/dam/harnois_071516_0675_dropknee.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Fastest Time to Walk up Kilimanjaro Backward: 24 Hours</h3>
-                    <p>Ahhhh, Kilimanjaro. The ultimate walk-up, and as such, the ultimate stomping ground for all
-                        would-be mountain record holders. Nepali mountaineer Sanjay Pandit walked backward to the
-                        19,347-foot high point of Africa on December 18, 2015, clocking in at 24 hours and 40 minutes.
+                    <h3>Drop Knee</h3>
+                    <p>A drop knee is a more extreme back step. It works best when you have a foothold near hip level.
+                        Step onto it with the tip of your toe; then roll your knee in until the outside of your shoe
+                        rests on the hold and your knee actually points down.Just like a back step, a drop knee gets
+                        your hip close to the wall. It’s great for a rest, but it’s especially great when you need extra
+                        reach on a steep or overhanging wall.
                     </p>
 
                     <a href="#" class="btn">explore now</a>
@@ -272,15 +332,15 @@
             </div>
             <div class="box">
                 <div class="image">
-                    <img src="https://www.mountkinabalu.com/image/tour/41.jpg" alt="">
+                    <img src="https://www.rei.com/dam/harnois_071516_0333_stemming.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Longest Tyrolean Traverse over a Lava Lake: Karina Oliani, 329ft</h3>
-                    <p>Brazilian woman Karina Oliani pulled herself 329 feet over a lava-filled crater in Ethiopia,
-                        wearing what looks like an astronaut suit, in December 2017. “The most challenging part of this
-                        record,” she said, “was finding two good rigging spots.” Tyroleans don’t really require any
-                        particular skill or fitness level, so was this something any of us could do? Probably. But this
-                        scene looks plucked straight out of a Metal Gear game, so I figured it was worth a mention.</p>
+                    <h3>Stemming</h3>
+                    <p>Stemming is pushing against two opposing surfaces. This could be in a chimney, in a corner, or on
+                        an otherwise flat wall that has a big, protruding feature.You can stem using any combination of
+                        hands and feet, but the key is to use counter pressure to stay in balance. Stemming relies on
+                        your big leg muscles, so it’s an extremely efficient way to climb, and can give you some great
+                        rests.</p>
 
                     <a href="#" class="btn">explore now</a>
                 </div>
@@ -290,11 +350,11 @@
                     <img src="https://www.mountkinabalu.com/image/tour/11.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Largest Clean-Up on Everest: 22,879 lbs of Trash</h3>
-                    <p>After all these records, most rather depressing, I’ve decided to end on a positive note. The
-                        Guinness World Records lists the “largest clean-up on Everest” as a 45-day effort by 12 Sherpas
-                        between April and May of 2019, collecting a whopping 22,879 pounds of garbage, as well as four
-                        dead bodies left on the mountain.</p>
+                    <h3>Flagging</h3>
+                    <p>Flagging is counter balancing by using a limb to shift your weight. The goal is to keep from
+                        swinging away from the rock.Flagging is advantageous any time you’re using holds that are all on
+                        the same side of your body. Because that also stacks all your weight to one side, you simply
+                        swing that leg out to the other side of your body to keep yourself in balance.</p>
 
                     <a href="#" class="btn">explore now</a>
                 </div>
@@ -304,11 +364,13 @@
                     <img src="https://www.mountkinabalu.com/image/tour/5.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Most People Connected by a Rope: 2,846</h3>
-                    <p>Surprisingly, this didn’t occur as a result of some tourist nonsense on the Half Dome cables or
-                        Angels Landing. Along a trail in the Presolana massif of the Italian Bergamasque Alps in July of
-                        2017, 2,846 people roped themselves together. Ostensibly organized to “[promote] safety and
-                        sustainability</p>
+                    <h3>Lay-backing</h3>
+                    <p>Lay-backing is when you pull and lean off one side of a flake or a crack and push your feet
+                        against the other side. When you have good footholds, laybacks are very efficient because your
+                        arms are straight and your feet do the hard work. When lack of good footholds requires you to
+                        smear, keep your heels low to maximize the amount of rubber against the rock.You can use a
+                        lay-back any time you’re in a crack and jamming isn’t an option, or you’ve got an opposing wall
+                        to push off against, like in a dihedral crack.</p>
 
                     <a href="#" class="btn">explore now</a>
                 </div>
@@ -318,11 +380,11 @@
                     <img src="https://www.mountkinabalu.com/image/tour/12.jpg" alt="">
                 </div>
                 <div class="content">
-                    <h3>Longest Line of Tents: 721</h3>
-                    <p>Surprisingly, the world’s longest line of tents isn’t found outside your local Best Buy on Black
-                        Friday. In fact, the world’s longest line of tents consisted of 721 tents, erected on a wooden
-                        walkway in the Wugong Mountains in Pingxiang, China on October 21, 2018. The total line of
-                        tents, put up by 200 volunteers as part of a local tourism initiative, measured 4,863 feet.</p>
+                    <h3>Mantle</h3>
+                    <p>A mantle is when you push down on a hold and bring feet up to meet hands. A classic example of
+                        mantling is at the top of a climb when you need to pull yourself onto the ledge.To mantle, push
+                        down on a hold to get your weight above it, then move your foot up to take the place of your
+                        hand.</p>
                     <a href="#" class="btn">explore now</a>
                 </div>
             </div>
@@ -337,7 +399,7 @@
 
 
     <!--blog section start-->
-    
+
 
     <!--newsletter section start-->
     <section class="newsletter">
@@ -353,7 +415,7 @@
         </div>
     </section>
     <!--newsletter section end-->
-    
+
 
     <!--footer start-->
     <section class="footer">
@@ -366,7 +428,7 @@
                 <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
             </div>
-           
+
             <div class="box">
                 <h3>contact infor</h3>
                 <a href=""><i class="fas fa-phone"></i> +231-413-123</a>

@@ -51,6 +51,7 @@ section {
   color: #fff;
 }
 
+
 .heading {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -164,6 +165,187 @@ section {
 .search-form form label:hover {
   color: #219150;
 }
+
+
+/*Login form*/
+#login-form input[type=text], #login-form input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+/* Set a style for all buttons */
+#login-form button {
+  background-color: #e5920c;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+#login-form button:hover {
+  opacity: 0.8;
+}
+
+#login-form .avatar{
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+#login-form .avatar img{
+  width: 10%;
+  border-radius: 50%;
+}
+#login-form .container {
+  padding: 16px;
+  width: 35rem;
+  border: 2px solid rgba(225,255,255,.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+ 
+}
+#login-form .container .more a{
+  color: rgb(232, 30, 30);
+}
+
+#login-form span.psw {
+  float: right;
+  padding-top: 16px;
+  font-size: 1.5rem;
+ 
+}
+#login-form{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: wheat;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transform: translateY(-110%);
+}
+#login-form.active {
+  transform: translateY(0%);
+}
+#login-form #close-login {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #e9dede;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+#login-form #close-login:hover,
+#login-form #close-login:focus {
+  color: red;
+  cursor: pointer;
+}
+#login-form label{
+  font-size: 2rem;
+  color: white;
+}
+
+/*sing up form*/
+#signup-form input[type=text], #signup-form input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+/* Set a style for all buttons */
+#signup-form button {
+  background-color: #32eb11;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+#signup-form button:hover {
+  opacity: 0.8;
+}
+
+#signup-form .avatar{
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+#signup-form .avatar img{
+  width: 10%;
+  border-radius: 50%;
+}
+#signup-form .container {
+  padding: 16px;
+  width: 35rem;
+  border: 2px solid rgba(225,255,255,.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+ 
+}
+#signup-form .container .more a{
+  color: rgb(232, 30, 30);
+}
+
+#signup-form span.psw {
+  float: right;
+  padding-top: 16px;
+  font-size: 1.5rem;
+ 
+}
+#signup-form{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: wheat;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transform: translateY(-110%);
+}
+#signup-form.active {
+  transform: translateY(0%);
+}
+#signup-form #close-signup {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #e9dede;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+#signup-form #close-signup:hover,
+#signup-form #close-signup:focus {
+  color: red;
+  cursor: pointer;
+}
+#signup-form label{
+  font-size: 2rem;
+  color: white;
+}
+
+
 
 .home {
   padding: 0;

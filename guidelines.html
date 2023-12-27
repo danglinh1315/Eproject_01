@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/homepage/style.css">
+    <link rel="stylesheet" href="style/guidelines.css">
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -13,76 +15,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style/homepage/webmaster.css">
 
-    <style>
-        .home {
-            height: 50vh;
-            width: 100%;
-            background: url(https://img.upanh.tv/2023/12/17/guillaume-marques-9HRLg-yzeq8-unsplash.jpg);
-            background-position: center;
-            background-size: cover;
-            text-align: center;
-            color: #fff;
+    <script>
 
+        // show the given page, hide the rest
+        function show(elementID) {
+            // find the requested page and alert if it's not found
+            const ele = document.getElementById(elementID);
+            if (!ele) {
+                alert("no such element");
+                return;
+            }
+
+
+            // get all pages, loop through them and hide them
+            const pages = document.getElementsByClassName('category');
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+
+            // then show the requested page
+            document.getElementById('begin').style.display = 'none';
+            ele.style.display = 'block';
         }
-
-        .category .box-container .box {
-            text-align: left;
-            padding: 2rem;
-        }
-
-        .category-all {
-            display: flex;
-
-        }
-
-        article.menu {
-            width: 20%;
-            padding: 5px;
-
-            /* Adjust padding as needed */
-            box-sizing: border-box;
-            font-size: 1.5rem;
-            margin-top: 30px;
-            margin-left: 0px;
-           
-
-        }
-
-        article li {
-            border: 1px solid blueviolet;
-            border-width: 100%;
-
-            margin-left: 0px;
-            list-style: none;
-            background-color: forestgreen;
-
-        }
-
-        article li:hover {
-            background-color: aqua;
-
-        }
-
-
-
-        aside {
-            flex-grow: 1;
-            padding: 20px;
-            /* Adjust padding as needed */
-            box-sizing: border-box;
-        }
-
-        .category-all {
-            padding: 5px;
-        }
-
-        aside.content {
-            overflow-y: auto;
-            /* Enable vertical scrollbar if needed */
-            height: 100vh;
-            /* Set a fixed height to make it always visible */
-        }
-    </style>
+    </script>
 
 </head>
 
@@ -102,25 +57,18 @@
                 <a href="development.html">Latest Development</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="club.html">Clubs</a>
-               
                 <a href="guidelines.html">Guidelines</a>
-                <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
-                <a href="#" onclick="showLogin(); return false;">Login</a>
             </div>
 
-            <div id="login-form" style="display: none;">
-                <label for="username">Username:</label>
-                <input type="text" id="username">
-                <label for="password">Password:</label>
-                <input type="password" id="password">
-                <button onclick="attemptLogin()">Submit</button>
-            </div>
         </nav>
 
         <div class="icons">
             <a href="#"><span id="menu-btn" class="material-symbols-outlined">
                     menu
+                </span></a>
+            <a href="#"><span class="material-symbols-outlined" id="login-btn">
+                    passkey
                 </span></a>
 
             <a href="#"><span class="material-symbols-outlined" id="search-btn">
@@ -130,18 +78,72 @@
 
     </header>
     <!--Header section end-->
+    <!--login-form start-->
+    <div id="login-form" >
+        <div class="avatar">
+            <span id="close-login" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <button type="submit" onclick="attemptLogin()">Sign in</button>
+            <label for="">
+                <input type="checkbox">remember me
+            </label>
+            <p style="font-size: 1.5rem; text-align: center;">don't have account?</p>
+            <button type="button" id="linksignup">Sign up</button>
+            <div class="more">
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
 
+        </div>
+
+    </div>
+    <!--login-form end-->
+
+    <!--sign-up form start-->
+    <div id="signup-form">
+        <div class="avatar">
+            <span id="close-signup" class="material-symbols-outlined">
+                close
+            </span>
+            <img src="picture/avatar-login.png" alt="">
+        </div>
+        <div class="container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <label for="password">Repeat Password:</label>
+            <input type="password" id="password" placeholder="Enter your Repeat password">
+            <button type="submit" onclick="attemptLogin()">Sign Up</button>
+            <div class="more">
+                <span class="psw">Have an account? <a href="#" id="linksignin">sign in?</a></span>
+            </div>
+
+        </div>
+
+    </div>
+    <!--sign-up form end-->
     <!--Search form-->
     <div class="search-form">
         <span id="close-search" class="material-symbols-outlined">
             close
         </span>
         <form action="">
-            <input type="text" name="" placeholder="search here..." id="search-box">
+            <input type="text" name="" placeholder="search here..." id="search-box" oninput="search()">
             <label><span class="material-symbols-outlined">
                     search
                 </span></label>
         </form>
+        <ul id="searchResults">
+
+        </ul>
     </div>
     <!--Search form end-->
     <section class="home" id="home">
@@ -150,209 +152,551 @@
     </section>
 
     <!--Home section end-->
-
-
-
-
     <!--categorysection start-->
 
     <h1 class="heading">Guidelines</h1>
-    <p style="font-size: 1.5rem;">
+    <p style="font-size: 1.5rem; align-items: center; text-align: center; font-style: italic;">
         Welcome to the thrilling world of mountaineering! Whether you are a novice adventurer or an
         experienced trekker looking to conquer new heights, this comprehensive guide will walk you through
         every step of your mountaineering journey.
     </p>
 
     <section class="category-all">
-
-
         <article class="menu">
             <ul>
                 <li>
-                    <a href="">Preparing</a>
+                    <a href="#" onclick="return show('Preparing');">Preparing</a>
                 </li>
                 <li>
-                    <a href="">Research and Planning</a>
+                    <a href="#" onclick="return show('Research');">Research and Planning</a>
                 </li>
                 <li>
-                    <a href="">Navigation and Techniques</a>
+                    <a href="#" onclick="return show('Navigation');">Navigation and Techniques</a>
                 </li>
 
                 <li>
-                    <a href="">Sheltering and Hazards</a>
+                    <a href="#" onclick="return show('Sheltering');">Sheltering and Hazards</a>
                 </li>
                 <li>
-                    <a href="">Records and Success Stories</a>
+                    <a href="#" onclick="return show('Records');">Records and Success Stories</a>
                 </li>
                 <li>
-                    <a href="">GeoLocation and Summit Stories</a>
+                    <a href="#" onclick="return show('GeoLocation');">GeoLocation and Summit Stories</a>
                 </li>
                 <li>
-                    <a href="">Gallery of Adventures</a>
+                    <a href="#" onclick="return show('Gallery');">Gallery of Adventures</a>
                 </li>
                 <li>
-                    <a href="">Latest Developments</a>
+                    <a href="#" onclick="return show('Latest');">Latest Developments</a>
                 </li>
                 <li>
-                    <a href="">General Guidelines</a>
+                    <a href="#" onclick="return show('General');">General Guidelines</a>
                 </li>
             </ul>
 
 
         </article>
         <aside class="content">
-            <div class="category">
+            <div class="category" id="begin" style="display: block; font-size: 1.5rem; ">
+                
+                <div class="content" style="margin-bottom: 2rem;">
+                    <p>
+                        <h3>There are a few climbing guidelines that help to prevent accidents when using a portable ladder.</h3>
+                        <ul>
+                            <li>Wear shoes with nonskid soles that are free of mud or grease. Clean ladder rungs of mud, grease, or ice before climbing.</li>
+                            <li>Place ladders on stable bases. Boxes, barrels, or other unstable surfaces should never be used to obtain additional height.</li>
+                            <li>If necessary, have another person hold the base of the ladder. If no one is available, the ladder should be securely lashed or fastened top and bottom to prevent it from slipping.</li>
+                            <li>Overreaching can cause instability. A good rule of thumb is to not let one's belt buckle outside the uprights.</li>
+                            <li>Always face the ladder and maintain a 3-point contact when climbing or descending.</li>
+                            <li>Always check to ensure tools and equipment have been removed from the top of the ladder before moving it.</li>
+                            <li>Only one person should climb a ladder at a time.</li>
+                            <li>Inspect ladders on a regular basis. See the Ladder Inspection Checklist.pdf for what to look for during the inspection.</li>
+                        </ul>
 
+                    </p>
+                </div>
+                <div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/e/t3wgls" frameborder="0" width="50%" height="50%" allowfullscreen style="width:100%;height:50%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+            </div>
+
+            <div class="category" id="Preparing" >
+                <h1 class="heading">1.Preparing</h1>
                 <div class="box-container">
-                    <div class="box">
-                        <div class="content">
-                        <h3>1.Preparing</h3>
-                        <p>1.1. Assess Your Readiness <br>
-                            Evaluate your rock climbing skills, strength, and mental preparedness. <br>
-                            Consider taking a rock climbing fundamentals course. <br>
-                            1.2. Gear Up <br>
-                            Invest in rock climbing-specific gear: <br>
-                            Climbing shoes <br>
-                            Harness <br>
-                            Helmet <br>
-                            Chalk bag for grip <br>
-                            Ensure your gear is in excellent condition. <br>
-                            1.3. Physical Conditioning <br>
-                            Focus on building upper body strength, finger strength, and core stability. <br>
-                            Incorporate climbing-specific exercises into your fitness routine </p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                    </div>
-                    <div class="box">
-                        <div class="content">
-
-                        <h3>2. Research and Planning</h3>
-                        <p>2.1. Choose Your Climb <br>
-                            Research climbing routes based on difficulty, type of rock, and location. <br>
-                            Understand the specific challenges of the chosen climbing destination. <br>
-                            2.2. Join a Climbing Community <br>
-                            Connect with local climbing clubs or groups. <br>
-                            Attend indoor climbing sessions to practice and learn from experienced climbers.</p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                    </div>
 
                     <div class="box">
+
                         <div class="content">
+                            <h3>1.1. Assess Your Readiness</h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
 
-                        <h3>3. Navigation and Techniques</h3>
-                        <p>3.1. Map Reading and Navigation <br>
-                            Learn to read climbing route guides and topographic maps for outdoor climbs. <br>
-                            Understand route grading systems. <br>
-                            3.2. Climbing Techniques <br>
-                            Master essential climbing techniques, including: <br>
-                            Belaying <br>
-                            Lead Climbing <br>
-                            Toprope Climbing</p>
-                        <a href="#" class="btn">read more</a>
-                    </div>
-                    </div>
+                            <p> <br>
+                                Evaluate your rock climbing skills, strength, and mental preparedness. <br>
+                                Consider taking a rock climbing fundamentals course. <br>
+                                <br>
 
-                    <div class="box">
-                        <div class="content">
+                                <br>
 
-                        <h3>4. Sheltering and Hazards</h3>
-                        <p>4.1. Sheltering <br>
-                            Understand how to set up a temporary shelter during multi-pitch climbs. <br>
-                            Learn emergency bivouac techniques. <br>
-                            4.2. Hazards and Risk Management <br>
-                            Identify rock climbing hazards, such as loose rock and falling objects. <br>
-                            Practice risk management strategies for climbing safety. <br>
+                            </p>
                             <a href="#" class="btn">read more</a>
-                        </p>
-                    </div>
-                    </div>
+                        </div>
 
-                    <div class="box">
-                        <div class="content">
-
-                        <h3>5. Records and Success Stories</h3>
-                        <p>5.1. Record Your Climbs <br>
-                            Maintain a climbing journal noting details of each climb, including challenges and
-                            achievements. <br>
-                            Document your progression and lessons learned. <br>
-                            5.2. Learn from Climbing Stories <br>
-                            Read about successful rock climbing stories. <br>
-                            Gain insights into route selection, technical challenges, and overcoming fears <br>
-                            <a href="#" class="btn">read more</a>
-                        </p>
-                    </div>
                     </div>
 
                     <div class="box">
                         <div class="content">
 
-                        <h3>6. GeoLocation and Summit Stories</h3>
-                        <p>6.1. Explore Climbing Locations <br>
-                            Use GeoLocation APIs to discover rock climbing spots globally. <br>
-                            Plan your climbs by exploring potential routes and conditions. <br>
-                            6.2. Summit Stories <br>
-                            Engage with the climbing community to share and learn from summit stories. <br>
-                            Participate in climbing forums and events. <br>
+                            <h3>1.2. Gear Up</h3>
+                            <img src="picture/guidless-1.jpg" alt="">
+                            <p>Invest in rock climbing-specific gear: <br>
+                                Climbing shoes <br>
+                                Harness <br>
+                                Helmet <br>
+                                Chalk bag for grip <br>
+                                Ensure your gear is in excellent condition. <br></p>
                             <a href="#" class="btn">read more</a>
-                        </p>
+                        </div>
                     </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 1.3. Physical Conditioning</h3>
+                            <img src="picture/guidless-2.jpg" alt="">
+                            <p>Focus on building upper body strength, finger strength, and core stability. <br>
+                                Incorporate climbing-specific exercises into your fitness routine <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 1.4 Jog or do cardio before you climb</h3>
+                            <img src="https://static.tripzilla.com/thumb/2/d/113197_800x.jpg" alt="">
+                            <p>This is how you can condition your body and build your stamina for the uphill climb. This
+                                is really important especially if you don’t usually work out, because you don’t want to
+                                shock your body of the exertion it’s to going to go through. <br>
+                                Make sure to jog a few times in the weeks leading to your climb. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 1.5. Waterproof your things whether rain or shine</h3>
+                            <img src="https://static.tripzilla.com/thumb/2/e/113198_800x.jpg" alt="">
+                            <p>Even if it doesn’t rain, you never know if you’re going to run into a puddle or stream
+                                that you have to cross, or worse, might slip into. <br>
+                                Don’t just protect yourself, protect your things too by using waterproof materials. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 1.6. Stretch before the climb</h3>
+                            <img src="https://static.tripzilla.com/thumb/2/c/113196_800x.jpg" alt="">
+                            <p>Even if it doesn’t rain, you never know if you’re going to run into a puddle or stream
+                                that you have to cross, or worse, might slip into. <br>
+                                Don’t just protect yourself, protect your things too by using waterproof materials. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="category" id="Research" >
+                <h1 class="heading">2. Research and Planning</h1>
+                <div class="box-container">
+
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>2.1. Choose Your Climb</h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
+
+                            <p> Research climbing routes based on difficulty, type of rock, and location. <br>
+                                Understand the specific challenges of the chosen climbing destination. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
                     </div>
 
                     <div class="box">
                         <div class="content">
 
-                        <h3>7. Gallery of Adventures</h3>
-                        <p>7.1. Document Your Climbing Journey <br>
-                            Capture stunning visuals of your climbing experiences. <br>
-                            Create a gallery showcasing your rock climbing adventures. <br>
-                            7.2. Share with the Climbing Community <br>
-                            Share your climbing experiences on social media platforms. <br>
-                            Contribute to climbing forums by providing tips and recommendations. <br>
+                            <h3>2.2. Join a Climbing Community </h3>
+                            <img src="picture/guidless-1.jpg" alt="">
+                            <p> Connect with local climbing clubs or groups. <br>
+                                Attend indoor climbing sessions to practice and learn from experienced climbers.
+                            </p>
                             <a href="#" class="btn">read more</a>
-                        </p>
+                        </div>
                     </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 2.3. Narrow your trip choices</h3>
+                            <img src="picture/guidless-2.jpg" alt="">
+                            <p>Things like how many days you have, how many people you’re going with <br>
+                                what skills you have and the time of year can narrow down your options. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 1.4 Jog or do cardio before you climb</h3>
+                            <img src="https://static.tripzilla.com/thumb/2/d/113197_800x.jpg" alt="">
+                            <p>This is how you can condition your body and build your stamina for the uphill climb. This
+                                is really important especially if you don’t usually work out, because you don’t want to
+                                shock your body of the exertion it’s to going to go through. <br>
+                                Make sure to jog a few times in the weeks leading to your climb. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 1.5. Research routes:</h3>
+                            <img src="https://static.tripzilla.com/thumb/2/e/113198_800x.jpg" alt="">
+                            <p>Use guidebooks and online resources to select an objective. Or work with a guide service
+                                to pick the peak you want to climb. While doing your research,<br>
+                                consider and investigate the skills needed for the route, the ideal group size for the
+                                type of climb and if permits are required. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 1.6. Gather your gear and supplies</h3>
+                            <img src="https://static.tripzilla.com/thumb/2/c/113196_800x.jpg" alt="">
+                            <p>Grab your ice axe, boots, crampons and other personal climbing gear. <br>
+                                hings like tents, ropes and stoves can be shared among the group. If you don’t own
+                                certain items, you may be able to rent them rather than buying. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="category" id="Navigation" >
+                <h1 class="heading">3. Navigation and Techniques</h1>
+                <div class="box-container">
+
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>3.1. Map Reading and Navigation</h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
+
+                            <p> <br>
+                                Learn to read climbing route guides and topographic maps for outdoor climbs. <br>
+                                Understand route grading systems. <br>
+                                <br>
+                            </p>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
                     </div>
 
                     <div class="box">
                         <div class="content">
 
-                        <h3>8. Latest Developments</h3>
-                        <p>8.1. Stay Updated <br>
-                            Stay informed about the latest rock climbing gear, safety protocols, and training methods.
-                            <br>
-                            Attend workshops and events to enhance your skills. <br>
+                            <h3> 3.2. Climbing Techniques</h3>
+                            <img src="picture/guidless-1.jpg" alt="">
+                            <p>Master essential climbing techniques, including: <br>
+                                Belaying <br>
+                                Lead Climbing <br>
+                                Toprope Climbing</p>
                             <a href="#" class="btn">read more</a>
-                        </p>
+                        </div>
                     </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 3.3. Maintaining Balance</h3>
+                            <img src="https://www.rei.com/dam/rinckenberger_111815_3906_balance.jpg" alt="">
+                            <p>When you’re lucky enough to have a line of jugs leading straight up the wall, climbing is
+                                pretty intuitive. <br>
+                                When you’re on a route where you have to move and pull in different directions, though,
+                                you have to use your body to maintain balance. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="content">
+
+                            <h3> 3.4 Climbing Efficiently</h3>
+                            <img src="https://www.rei.com/dam/harnois_071516_0230_straightarms.jpg" alt="">
+                            <p>Straight arms are happy arms. Straightening your arm allows your skeleton to take most of
+                                the weight, not your muscles. Even a slight bend in your elbow means your muscles are
+                                working to hold it there. <br>
+                                Focus on your hips. Beginners often keep hips squared to the wall, which can feel very
+                                stable, but it pushes your weight away from the wall and stresses your muscles. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="category" id="Sheltering" >
+                <h1 class="heading">4. Sheltering and Hazards</h1>
+                <div class="box-container">
+
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>4.1. Sheltering </h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
+
+                            <p> <br>
+                                Understand how to set up a temporary shelter during multi-pitch climbs. <br>
+                                Learn emergency bivouac techniques. <br>
+                                Identify rock climbing hazards, such as loose rock and falling objects. <br>
+                                Practice risk management strategies for climbing safety. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
                     </div>
 
                     <div class="box">
                         <div class="content">
-
-                        <h3>9. General Guidelines</h3>
-                        <p>9.1. Safety Reminders <br>
-                            Prioritize safety in all climbing situations. <br>
-                            Regularly check and maintain your climbing gear. <br>
-                            9.2. Environmental Responsibility <br>
-                            Practice Leave No Trace principles. <br>
-                            Respect access restrictions to climbing areas. <br>
-                            9.3. Continuous Learning <br>
-                            Embrace a mindset of continuous learning. <br>
-                            Seek mentorship and feedback to improve your climbing skills. <br>
+                            <h3>4.2. Hazards and Risk Management </h3>
+                            <img src="picture/guidless-1.jpg" alt="">
+                            <p>When climbing walls over several pitches, in areas that are often far away from
+                                civilization, you are exposed to many dangers which can,<br>
+                                however, be minimized or even in some cases eliminated. Alpine dangers can be divided
+                                into two main groups: objective hazards that ‘come from outside’, that is, they
+                                originate from the mountain and its surroundings, and subjective hazards that are caused
+                                by the climbers’ behavior. </p>
                             <a href="#" class="btn">read more</a>
-                        </p>
+                        </div>
                     </div>
+                    <div class="box">
+                        <div class="content">
+                            <h3> 4.3. Dangers in alpine climbing</h3>
+                            <img src="picture/guidless-2.jpg" alt="">
+                            <p>we first explain the objective hazards of the following groups according to their nature: weather, rockfall, icefall and avalanches. Then, we discuss the subjective hazards, such as overestimating one’s own abilities, in more detail. </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="category" id="Records" >
+                <h1 class="heading">5. Records and Success Stories</h1>
+                <div class="box-container">
+
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>5.1. Record Your Climbs  </h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
+
+                            <p> Maintain a climbing journal noting details of each climb, including challenges and
+                                achievements. <br>
+                                Document your progression and lessons learned. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
                     </div>
 
+                    <div class="box">
+                        <div class="content">
+                            <h3>5.2. Learn from Climbing Stories <br> </h3>
+                            <img src="picture/guidless-1.jpg" alt="">
+                            <p>Read about successful rock climbing stories. <br>
+                                Gain insights into route selection, technical challenges, and overcoming fears <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
 
+            <div class="category" id="GeoLocation" >
+                <h1 class="heading">6. GeoLocation and Summit Stories</h1>
+                <div class="box-container">
 
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>6.1. Explore Climbing Locations  </h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
+
+                            <p> Use GeoLocation APIs to discover rock climbing spots globally. <br>
+                                Plan your climbs by exploring potential routes and conditions. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+                        <div class="content">
+                            <h3> 6.2. Summit Stories</h3>
+                            <img src="picture/guidless-2.jpg" alt="">
+                            <p> Engage with the climbing community to share and learn from summit stories. <br>
+                                Participate in climbing forums and events. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="content">
+                            <h3> 6.3. Daniel Woods Flashes</h3>
+                            <img src="picture/guidless-2.jpg" alt="">
+                            <p> Daniel Woods pushed bouldering standards just a little bit higher on November 28 when he fired Entlinge (V14/15),  <br>
+                                a five-move Fred Nicole problem climbing a steep prow in Murgtal, Switzerland, on his first try  <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="category" id="Gallery" >
+                <h1 class="heading">7. Gallery of Adventures</h1>
+                <div class="box-container">
+
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>7.1. Document Your Climbing Journey   </h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
+
+                            <p> Share your climbing experiences on social media platforms. <br>
+                                Contribute to climbing forums by providing tips and recommendations. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+                        <div class="content">
+                            <h3> 7.2. Share with the Climbing Community <br></h3>
+                            <img src="picture/guidless-2.jpg" alt="">
+                            <p> Engage with the climbing community to share and learn from summit stories. <br>
+                                Participate in climbing forums and events. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="content">
+                            <h3> 7.3. Find something to capitalize on</h3>
+                            <img src="picture/guidless-2.jpg" alt="">
+                            <p> The way I like to grab attention from my audience will depend on where I am shooting.  <br>
+                                For example if I were in Alaska where the snow capped mountains behind the bouldering is so prevalent I would want to show them off. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="category" id="Latest">
+                <h1 class="heading">8. Latest Developments</h1>
+                <div class="box-container">
+
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>8.1. Stay Updated </h3>
+                            <img src="https://img.upanh.tv/2023/12/26/travel-3518769_1280.jpg" alt="">
+
+                            <p> Stay informed about the latest rock climbing gear, safety protocols, and training
+                                methods.
+                                <br>
+                                Attend workshops and events to enhance your skills. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+                        <div class="content">
+                            <h3> 8.2. A difficult Patagonia season</h3>
+                            <img src="picture/guidless-1.jpg" alt="">
+                            <p> Sadly, climate change played a major role in mountaineering this year. In both Patagonia and on Aconcagua, there were accidents and long spells of bad weather.<br>
+                                Despite a fruitful season during which Matteo de la Bordella and Leo Gheza opened a new route on Mermoz with Sean Villanueva O’Driscoll, the talented pair couldn’t finish their ambitious Fitz Roy traverse. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="category" id="General">
+                <h1 class="heading">9. General Guidelines</h1>
+                <div class="box-container">
+
+                    <div class="box">
+
+                        <div class="content">
+                            <h3>9.1. Safety Reminders </h3>
+                            <img src="https://s3.amazonaws.com/www.explorersweb.com/wp-content/uploads/2023/12/12141424/Bielecki-ashtonished-Annapurna-670x700.jpg" alt="">
+
+                            <p>  Prioritize safety in all climbing situations. <br>
+                                Regularly check and maintain your climbing gear. <br>
+                            </p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+
+                    </div>
+
+                    <div class="box">
+                        <div class="content">
+                            <h3>  9.2. Environmental Responsibility </h3>
+                            <img src="https://s3.amazonaws.com/www.explorersweb.com/wp-content/uploads/2023/01/16120836/mermoz-700x525.jpg" alt="">
+                            <p> Practice Leave No Trace principles. <br>
+                                Respect access restrictions to climbing areas. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="content">
+                            <h3>  9.3. Continuous Learning </h3>
+                            <img src="picture/guidless-1.jpg" alt="">
+                            <p>  Embrace a mindset of continuous learning. <br>
+                                Seek mentorship and feedback to improve your climbing skills. <br></p>
+                            <a href="#" class="btn">read more</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
         </aside>
+
+
+        <!--<div class="box">
+
+                            <h3></h3>
+                            <p> <br>
+                               
+                               <br>
+                                
+                               <br>
+                               
+                                <a href="#" class="btn">read more</a>
+                            </p>
+                        </div>
+                    </div> -->
+
     </section>
 
 
@@ -373,15 +717,7 @@
                 <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
             </div>
-            <div class="box">
-                <h3>extra link</h3>
-                <a href="">my accout</a>
-                <a href="">my order</a>
-                <a href="">my wishlist</a>
-                <a href="">ask question</a>
-                <a href="">term of use</a>
-                <a href="">privacy policy</a>
-            </div>
+
             <div class="box">
                 <h3>contact infor</h3>
                 <a href=""><i class="fas fa-phone"></i> +231-413-123</a>
