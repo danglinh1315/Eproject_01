@@ -5,6 +5,7 @@ function userSignup() {
 
     if(!user || !password || !repassword){
         alert('Please fill in all fields.')
+return;
     }
 
     if (localStorage.getItem(user)) {
