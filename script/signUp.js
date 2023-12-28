@@ -3,6 +3,10 @@ function userSignup() {
     var password = document.getElementById('password_user').value;
     var repassword = document.getElementById('rpassword_user').value;
 
+    if(!user || !password || !repassword){
+        alert('Please fill in all fields.')
+    }
+
     if (localStorage.getItem(user)) {
         alert('Username already exists. Please choose another username.');
         return;
@@ -21,4 +25,6 @@ function userSignup() {
     localStorage.setItem(user, password);
     alert('Registration successfully!');
 }
+
+
 
