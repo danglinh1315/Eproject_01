@@ -54,10 +54,11 @@ section {
 
 .heading {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 5rem;
   font-size: 4rem;
   color: #10221b;
 }
+
 
 .header {
   position: fixed;
@@ -364,6 +365,7 @@ section {
 }
 .home .box .content {
   width: 50rem;
+
 }
 .home .box .content span {
   font-size: 4rem;
@@ -378,9 +380,12 @@ section {
 
 .home  .box p {
   font-size: 1.5rem;
-  color: #10221b;
+  color: black;
   padding: 1rem 0;
   line-height: 2;
+}
+.home  .box p:hover{
+  color: white;
 }
 
 .category .box-container {

@@ -16,10 +16,10 @@
 
 
 .message table{
-    border: 1px solid black;
+    
    
     width: 100%;
-    background-color: aqua;         
+           
 
 }   
 .message table tr{
@@ -30,6 +30,7 @@
 }  
 .message table td{
     border: 1px solid black;
+    
     gap: 0;
     font-size: 1.7rem;           
     
@@ -51,6 +52,7 @@
 }
 .message table th{
     border: 1px solid black;
+   
     gap: 0;
     font-size: 1.7rem;   
     

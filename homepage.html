@@ -15,12 +15,30 @@
     <script src="script/readmore.js"></script>
 
     <style>
+        .box-container h3{
+            min-height: 100px;
+        }
         .search-form ul {
-            font-size: 2rem;
+            
             margin-top: 200px;
-            color: white;
+            
 
         }
+
+        #searchResults li a{
+            font-size: 2rem;           
+            color: white;
+        }
+        #searchResults span{
+            font-size: 2rem;           
+            color: greenyellow;
+        }
+        #searchResults li a:hover{
+            font-size: 2.5rem;           
+            color: blue;
+        }
+
+
 
         .truncate {
             overflow: hidden;
@@ -271,11 +289,10 @@
         </div>
 
         <div class="content">
-            <h3>memorable outdoor experiences</h3>
+            <h3 id="home_2">memorable outdoor experiences</h3>
             <p>A Little About Me and My “Outdoor Experience” As someone who finishing her sophomore year of college and
                 will be starting as a junior in the fall, if I would have asked myself ten years ago, as a third or
-                fourth grader, if I would ever consider a career involving bunches of writing, </p>
-            <p>my answer would have been
+                fourth grader, if I would ever consider a career involving bunches of writing, my answer would have been
                 no. When I was young, every essay, story, and report I had to write I considered a chore, and for my
                 career, I wanted to do something fun, like swim with dolphins for a living.</p>
             <a href="#" class="btn">read more</a>
@@ -285,7 +302,7 @@
 
     <!--shop section start-->
     <section class="shop" id="shop">
-        <h1 class="heading">Types</h1>
+        <h1 class="heading" id="home_3">Types</h1>
         <div class="swiper product-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide">
@@ -302,7 +319,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <h3>Rock Climbing</h3>
+                        <h3 id="home_3_1">Rock Climbing</h3>
 
 
                     </div>
@@ -341,7 +358,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <h3>Ice Climbing</h3>
+                        <h3 id="home_3_2">Ice Climbing</h3>
 
 
                     </div>
@@ -360,7 +377,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <h3>Expedition Climbing</h3>
+                        <h3 id="home_3_3">Expedition Climbing</h3>
 
 
                     </div>
@@ -379,7 +396,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <h3>Scrambling</h3>
+                        <h3 id="home_3_4">Scrambling</h3>
 
 
                     </div>
@@ -400,7 +417,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <h3>Snowshoeing</h3>
+                        <h3 id="home_3_5">Snowshoeing</h3>
 
 
                     </div>
@@ -416,7 +433,7 @@
 
     <!--packages section start-->
     <section class="packages" id="packages">
-        <h1 class="heading">Records</h1>
+        <h1 class="heading" id="home_4">Records</h1>
         <div class="box-container">
             <div class="box">
                 <div class="image">
@@ -516,7 +533,7 @@
 
     <!--blog section start-->
     <section class="blogs" id="blogs">
-        <h1 class="heading">Hazards</h1>
+        <h1 class="heading" id="home_5">Hazards</h1>
         <div class="swiper blogs-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide">
@@ -662,9 +679,7 @@
     <section class="newsletter">
         <div class="content">
             <h1 class="heading">subscribe now</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, sint necessitatibus impedit quaerat
-                officiis vitae debitis dolorem culpa, in id maxime ullam, nam quod reprehenderit voluptatibus itaque
-                omnis dicta rem.</p>
+            <p></p>
             <form action="">
                 <input type="email" name="" placeholder="enter your email" id="" class="email">
                 <input type="submit" value="subscribe" class="btn">
