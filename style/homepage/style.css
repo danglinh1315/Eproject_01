@@ -119,7 +119,7 @@ section {
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  transform: translateY(-110%);
+  transform: translateY(-500%);
 }
 .search-form.active {
   transform: translateY(0%);
